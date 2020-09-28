@@ -14,10 +14,10 @@
 
     <ToggleButton
         android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_height="50dp"
         android:layout_gravity="right"
-        android:background="@drawable/toggle_selector"
+        android:layout_margin="10dp"
+        android:background="@drawable/heart"
         android:onClick="onDefaultToggleClick"
         android:textOff=""
         android:textOn="" />
