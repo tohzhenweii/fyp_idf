@@ -293,7 +293,7 @@
             <Button
                 android:id="@+id/navigation__adjust_mode_button"
                 android:layout_width="50dp"
-                android:layout_height="50"
+                android:layout_height="50dp"
                 android:background="@drawable/refresh"
                 android:onClick="toggleAdjustMode" />
 
