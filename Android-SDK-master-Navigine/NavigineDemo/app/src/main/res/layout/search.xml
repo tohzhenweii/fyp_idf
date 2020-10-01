@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_margin="10sp"
+    >
+    <LinearLayout
         android:orientation="horizontal" android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        >
 
-    <Button
+        <Button
 
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
-        android:onClick="Back"
-        android:text="Back" />
-    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:background="@drawable/redround"
+            android:onClick="Back"
+            android:text="Back"
+            android:textColor="#FFFFFF" />
 
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
-        android:onClick="History"
-        android:text="History" />
+        <Button
+            android:layout_marginLeft="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:background="@drawable/blueround"
+            android:onClick="History"
+            android:text="History" />
 
     </LinearLayout>
 
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="5sp"
     android:text="Destination 1 :"/>
 
     <Spinner
@@ -36,6 +45,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5sp"
         android:text="Destination 2 :"/>
 
     <Spinner
@@ -50,23 +60,37 @@
 
         android:layout_width="wrap_content"
         android:layout_height="38dp"
+        android:background="@drawable/greenround"
+        android:fontFamily="@font/hammersmith_one"
         android:onClick="Search"
-        android:text="Search" />
+        android:text="Search"
+        android:textSize="18sp"
+        android:layout_margin="5sp"
+        />
 
 
     <Button
 
-        android:layout_width="wrap_content"
+        android:layout_width="154dp"
         android:layout_height="38dp"
+        android:background="@drawable/bluepurpleround"
+        android:fontFamily="@font/hammersmith_one"
         android:onClick="Shortcut"
-        android:text="Add shortcut" />
+        android:text="Add shortcut"
+        android:textColor="#FFFFFF"
+        android:layout_margin="5sp"
+        android:textSize="18sp" />
 
     <TextView
+        android:layout_margin="10sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/hammersmith_one"
         android:text="Shortcuts"
+        android:textAllCaps="true"
+        android:textColor="#000000"
         android:textSize="30dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold|italic" />
 
     <ListView
         android:id="@+id/listVenue"

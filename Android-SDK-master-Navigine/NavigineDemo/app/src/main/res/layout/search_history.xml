@@ -4,11 +4,15 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:fontFamily="@font/hammersmith_one"
         android:text="Search History"
+        android:textAllCaps="true"
+        android:textColor="#322375"
         android:textSize="30dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold|italic" />
 
     <ListView
         android:id="@+id/listVenue2"

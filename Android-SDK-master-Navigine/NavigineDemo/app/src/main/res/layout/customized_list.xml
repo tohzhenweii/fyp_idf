@@ -2,34 +2,46 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <Button
+        android:id="@+id/Btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/redround"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="back"
         android:text="Back"
-        android:id="@+id/Btn_back"
-        android:onClick="back"/>
+        android:textColor="#FFFFFF"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="20sp"
+        android:textSize="18sp" />
+
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:paddingLeft="10sp"
     android:orientation="horizontal">
 
 
     <Button
+        android:id="@+id/fav"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:background="@drawable/ic_favorite_black_24dp"
-        android:id="@+id/fav"
-        android:onClick="Form_Fav"/>
+        android:background="@drawable/heart"
+        android:onClick="Form_Fav" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:fontFamily="@font/aldrich"
+        android:lineSpacingExtra="8sp"
+        android:onClick="Form_Fav"
         android:text="Favourites"
         android:textColor="#000000"
         android:textSize="30sp"
-        android:textStyle="bold"
-        android:onClick="Form_Fav"/>
+        android:textStyle="bold" />
 
 </LinearLayout>
 
@@ -37,63 +49,69 @@
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingLeft="10sp"
     android:orientation="horizontal" >
-    <Button
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@drawable/ic_star_black_24dp"
-        android:id="@+id/starred"
-        android:onClick="Form_Star"/>
+
+        <Button
+            android:id="@+id/starred"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@drawable/star"
+            android:onClick="Form_Star" />
 
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Starred"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:layout_margin="20dp"
-        android:textSize="30sp"
-        android:onClick="Form_Star"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/aldrich"
+            android:onClick="Form_Star"
+            android:text="Starred"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingLeft="10sp"
     android:orientation="horizontal" >
+
     <Button
+        android:id="@+id/want_togo"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:background="@drawable/ic_flag_black_24dp"
-        android:id="@+id/want_togo"
-        android:onClick="Form_Wanttogo"/>
-
+        android:background="@drawable/compass"
+        android:onClick="Form_Wanttogo" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/aldrich"
+        android:onClick="Form_Wanttogo"
         android:text="Want To Go"
         android:textColor="#000000"
-        android:textStyle="bold"
-        android:layout_margin="20dp"
         android:textSize="30sp"
-        android:onClick="Form_Wanttogo"
-        />
+        android:textStyle="bold" />
 
 
 
 </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Categories"
-        android:textColor="#000000"
-        android:textStyle="bold"
         android:layout_margin="20dp"
+        android:fontFamily="@font/hammersmith_one"
+        android:text="Categories"
+        android:textAllCaps="true"
+        android:textColor="#0E42AC"
         android:textSize="30sp"
-        />
+        android:textStyle="bold|italic" />
+
     <ListView
         android:id="@+id/listVenue"
         android:layout_width="match_parent"
