@@ -1,164 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/elm_splash"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_marginTop="5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="5sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="170sp"
         android:text="Adding Venues to the list"
-        android:textSize="30sp"/>
+        android:textColor="#000000"
+        android:textSize="30sp" />
+
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
             android:id="@+id/L308"
-            android:text="L308"
-            android:onClick="onCheckboxClicked"/>
-
-        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
+            android:onClick="onCheckboxClicked"
+            android:text="L308" />
+
+        <CheckBox
             android:id="@+id/L311"
-            android:text="L311"
-            android:onClick="onCheckboxClicked"/>
-
-        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
+            android:onClick="onCheckboxClicked"
+            android:text="L311" />
+
+        <CheckBox
             android:id="@+id/L312"
-            android:text="L312"
-            android:onClick="onCheckboxClicked"/>
-        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
+            android:onClick="onCheckboxClicked"
+            android:text="L312" />
+
+        <CheckBox
             android:id="@+id/L313"
-            android:text="L313"
-            android:onClick="onCheckboxClicked"/>
-
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:onClick="onCheckboxClicked"
+            android:text="L313" />
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:id="@+id/L314"
-        android:text="L314"
-        android:onClick="onCheckboxClicked"/>
 
         <CheckBox
+            android:id="@+id/L314"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
+            android:onClick="onCheckboxClicked"
+            android:text="L314" />
+
+        <CheckBox
             android:id="@+id/L306"
-            android:text="L306"
-            android:onClick="onCheckboxClicked"/>
-
-        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
+            android:onClick="onCheckboxClicked"
+            android:text="L306" />
+
+        <CheckBox
             android:id="@+id/L310"
-            android:text="L310"
-            android:onClick="onCheckboxClicked"/>
-
-        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
+            android:onClick="onCheckboxClicked"
+            android:text="L310" />
+
+        <CheckBox
             android:id="@+id/L309"
-            android:text="L309"
-            android:onClick="onCheckboxClicked"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:onClick="onCheckboxClicked"
+            android:text="L309" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
             android:id="@+id/L335"
-            android:text="L335"
-            android:onClick="onCheckboxClicked"/>
-
-        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
+            android:onClick="onCheckboxClicked"
+            android:text="L335" />
+
+        <CheckBox
             android:id="@+id/L348"
-            android:text="L348"
-            android:onClick="onCheckboxClicked"/>
-
-        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
+            android:onClick="onCheckboxClicked"
+            android:text="L348" />
+
+        <CheckBox
             android:id="@+id/L330"
-            android:text="L330"
-            android:onClick="onCheckboxClicked"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:onClick="onCheckboxClicked"
+            android:text="L330" />
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <CheckBox
+            android:id="@+id/BlkL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:id="@+id/BlkL"
-            android:text="Blk L - Level 3 Entrance/Exit"
-            android:onClick="onCheckboxClicked"/>
-
-
-
+            android:onClick="onCheckboxClicked"
+            android:text="Blk L - Level 3 Entrance/Exit" />
 
 
     </LinearLayout>
+
     <CheckBox
+        android:id="@+id/FYP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
-        android:id="@+id/FYP"
-        android:text="FYP Entrance/Exit"
-        android:onClick="onCheckboxClicked"/>
+        android:onClick="onCheckboxClicked"
+        android:text="FYP Entrance/Exit" />
 
     <Button
         android:id="@+id/Btn_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
         android:background="@drawable/blueround"
         android:onClick="add"
-        android:layout_marginTop="10sp"
         android:text="Add" />
 
     <Button
         android:id="@+id/Btn_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
         android:background="@drawable/redround"
         android:onClick="back"
         android:text="Back"
-        android:layout_marginTop="10sp"
         android:textColor="#FFFFFF" />
 </LinearLayout>
