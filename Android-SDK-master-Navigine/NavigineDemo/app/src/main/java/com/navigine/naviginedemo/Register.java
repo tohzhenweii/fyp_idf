@@ -17,13 +17,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 public class Register extends AppCompatActivity {
     EditText mFullName,mEmail,mPassword,mConfirmPassword,mPhone;
     Button mRegisterBtn;
     TextView mBtnGoToLogin;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
+    FirebaseDatabase rootNode;
+    //
+    DatabaseReference reference;
 
 @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +56,23 @@ public class Register extends AppCompatActivity {
     mRegisterBtn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            String username=mFullName.getText().toString().trim();
+            String phoneNumber=mPhone.getText().toString().trim();
             String email=mEmail.getText().toString().trim();
             String password=mPassword.getText().toString().trim();
             String confirmPassword=mConfirmPassword.getText().toString().trim();
             String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+            if(TextUtils.isEmpty(username)){
+                mFullName.setError("username is Required");
+
+                return;
+            }
+            if(TextUtils.isEmpty(phoneNumber)){
+                mPhone.setError("Email is Required");
+
+                return;
+            }
+
             if(TextUtils.isEmpty(email)){
                 mEmail.setError("Email is Required");
                 return;
@@ -80,6 +97,15 @@ public class Register extends AppCompatActivity {
                return;
                 // or
             }
+            rootNode=FirebaseDatabase.getInstance();
+            reference=rootNode.getReference("users");
+            String location="Notset";
+            String ShowLocation="False";
+            UserHelper helper=new UserHelper(username,phoneNumber,location,ShowLocation);
+            reference.child(phoneNumber).setValue(helper);
+
+            Toast.makeText(Register.this
+                    ,"data inserted",Toast.LENGTH_SHORT).show();
           //  progressBar.setVisibility(view.VISIBLE); caused program to crash
             fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
