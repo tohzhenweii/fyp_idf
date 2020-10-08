@@ -101,7 +101,8 @@ public class Register extends AppCompatActivity {
             reference=rootNode.getReference("users");
             String location="Notset";
             String ShowLocation="False";
-            UserHelper helper=new UserHelper(username,phoneNumber,location,ShowLocation);
+String emailladd="fake";
+            UserHelper helper=new UserHelper(username,phoneNumber,location,ShowLocation,emailladd);
             reference.child(phoneNumber).setValue(helper);
 
             Toast.makeText(Register.this

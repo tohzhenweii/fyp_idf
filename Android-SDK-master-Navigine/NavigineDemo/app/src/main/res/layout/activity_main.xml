@@ -28,6 +28,13 @@
                 android:textColor="#ffffff"
                 android:textSize="15dp" />
 
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="#FFFFFF" />
+
         </com.navigine.naviginesdk.LocationView>
 
         <LinearLayout
@@ -66,6 +73,22 @@
 
                 />
 
+            <Button
+
+                android:id="@+id/btnGotoLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/greenround"
+                android:fontFamily="@font/hammersmith_one"
+                android:onClick="Search_Btn"
+                android:text="GO!"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#000000"
+                android:textColorHighlight="#0B0909"
+
+
+                android:textSize="18sp" />
 
             <Button
 

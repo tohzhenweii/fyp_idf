@@ -3,16 +3,13 @@ package com.navigine.naviginedemo;
 import android.app.*;
 import android.content.*;
 import android.graphics.*;
-import android.graphics.drawable.Icon;
 import android.os.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
 import android.util.*;
-import android.widget.AdapterView;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
 
 import java.io.*;
@@ -42,9 +39,11 @@ public class MainActivity extends Activity
   private Button        mNextFloorButton          = null;
   private Button        search_button             = null;
   private Spinner       LVenue                    = null;
+  Button mGotoLocation;
   String text1 = null;
   String text2 = null;
   String cat = null;
+  TextView textView5;
   List<String> VenueList = new ArrayList<String>();
 
 
@@ -79,11 +78,13 @@ public class MainActivity extends Activity
   private Venue   mSelectedVenue  = null;
   private RectF   mSelectedVenueRect = null;
   private Zone    mSelectedZone   = null;
+
+
   // My codes
 
   @Override protected void onCreate(Bundle savedInstanceState)
-  {
-
+  {//textView5=(TextView) findViewById(R.id.tvLocation);
+   // String Location= com.navigine.naviginesdk.Location.class.getName();
     cat = getIntent().getStringExtra("cat");
     Log.d(TAG, "MainActivity started");
     //My codes for Venue List
@@ -96,7 +97,13 @@ public class MainActivity extends Activity
     //My codes for dropdown list
 
     mydb = new MyDbAdapter(this);
-
+    mGotoLocation=findViewById(R.id.btnGotoLocation);
+mGotoLocation.setOnClickListener(new OnClickListener() {
+  @Override
+  public void onClick(View v) {
+    startActivity(new Intent(getApplicationContext(), FindLocation.class));
+  }
+});
 
 
 /*
@@ -482,7 +489,9 @@ public class MainActivity extends Activity
     mErrorMessageLabel.setText(message);
     mErrorMessageLabel.setVisibility(View.VISIBLE);
   }
-  
+
+
+
   private void cancelErrorMessage()
   {
     mErrorMessageLabel.setVisibility(View.GONE);

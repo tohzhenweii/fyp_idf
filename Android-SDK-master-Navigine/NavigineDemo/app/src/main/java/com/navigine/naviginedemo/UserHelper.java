@@ -1,13 +1,14 @@
 package com.navigine.naviginedemo;
 
 public class UserHelper {
-    String userName,phoneNumber,Location,ShowLocation;
+    String userName,phoneNumber,Location,ShowLocation,Email;
 
-    public UserHelper(String userName, String phoneNumber, String location, String showLocation) {
+    public UserHelper(String userName, String phoneNumber, String location, String showLocation,String Email) {
         this.userName = userName;
         this.phoneNumber = phoneNumber;
        this.Location=location;
        this.ShowLocation=showLocation;
+       this.Email=Email;
     }
 
     public String getUserName() {

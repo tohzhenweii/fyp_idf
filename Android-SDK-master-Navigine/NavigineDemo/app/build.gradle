@@ -30,7 +30,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:17.0.0'
     testImplementation 'junit:junit:4.12'
     implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'com.github.Navigine:Android-SDK:20191220'
+    implementation 'com.github.Navigine:Android-SDK:20200929'
     implementation 'com.google.firebase:firebase-database:19.4.0'
 
 }
