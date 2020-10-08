@@ -153,7 +153,7 @@ mGotoLocation.setOnClickListener(new OnClickListener() {
     
     // Initializing location view
     mLocationView = (LocationView)findViewById(R.id.navigation__location_view);
-    mLocationView.setBackgroundColor(0xffebebeb);
+    mLocationView.setBackgroundResource(R.drawable.elm_splash);
     mLocationView.setListener
     (
       new LocationView.Listener()
@@ -260,7 +260,8 @@ mGotoLocation.setOnClickListener(new OnClickListener() {
   {
     moveTaskToBack(true);
   }
-  
+
+  //Refresh locator
   public void toggleAdjustMode(View v)
   {
     mAdjustMode = !mAdjustMode;
@@ -406,7 +407,7 @@ mGotoLocation.setOnClickListener(new OnClickListener() {
   @RequiresApi(api = Build.VERSION_CODES.O)
   private void handleEnterZone(Zone z)
   {
-    Log.d(TAG, "Enter zone " + z.getName());
+    Log.d(TAG, "Entered zone " + z.getName());
     if (NOTIFICATIONS_ENABLED)
     {
       Intent notificationIntent = new Intent(this, NotificationActivity.class);
@@ -428,16 +429,17 @@ mGotoLocation.setOnClickListener(new OnClickListener() {
       notificationManager.notify(z.getId(), notificationBuilder.build());
     }
   }
-  
-/*  private void handleLeaveZone(Zone z)
+
+
+  private void handleLeaveZone(Zone z)
   {
-    Log.d(TAG, "Leave zone " + z.getName());
+    Log.d(TAG, "Left zone " + z.getName());
     if (NOTIFICATIONS_ENABLED)
     {
       NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
       notificationManager.cancel(z.getId());
     }
-  }*/
+  }
   
   private void handleDeviceUpdate(DeviceInfo deviceInfo)
   {
@@ -729,7 +731,7 @@ mGotoLocation.setOnClickListener(new OnClickListener() {
   }
 
 
-
+// Search function
   public void Search()
 {
   //text = "L306";
@@ -749,6 +751,7 @@ mGotoLocation.setOnClickListener(new OnClickListener() {
         mTargetVenue = mSelectedVenue;
         mNavigation.setTarget(new LocationPoint(mLocation.getId(), subLoc.getId(), mTargetVenue.getX(), mTargetVenue.getY()));
         if(text2.equals("---Select---")){
+          Log.d(TAG, String.format(Locale.ENGLISH, "Undefined! Please select a venue!"));
           continue;
         }
         else {
@@ -1064,7 +1067,7 @@ mGotoLocation.setOnClickListener(new OnClickListener() {
             //Log.d(TAG, String.format(Locale.ENGLISH, "Clicked Q sublocation %s == %s " , Q.subLocation,subLoc.getId() ));
             //Log.d(TAG, String.format(Locale.ENGLISH, "Clicked P sublocation %s == %s " , P.subLocation,subLoc.getId() ));
             Log.d(TAG, String.format(Locale.ENGLISH, "Drawing path " ));
-            paint.setStrokeWidth(3 * dp);
+            paint.setStrokeWidth((float) (1.575 * dp));
             PointF P1 = mLocationView.getScreenCoordinates(P);
             PointF Q1 = mLocationView.getScreenCoordinates(Q);
             canvas.drawLine(P1.x, P1.y, Q1.x, Q1.y, paint);//
