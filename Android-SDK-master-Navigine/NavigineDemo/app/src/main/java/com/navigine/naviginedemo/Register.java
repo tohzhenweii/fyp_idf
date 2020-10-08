@@ -1,6 +1,7 @@
 package com.navigine.naviginedemo;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
@@ -29,7 +30,7 @@ public class Register extends AppCompatActivity {
     FirebaseDatabase rootNode;
     //
     DatabaseReference reference;
-
+SharedPreferences sp;
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,8 +104,21 @@ public class Register extends AppCompatActivity {
             String location="Notset";
             String ShowLocation="False";
 
-            UserHelper helper=new UserHelper(username,phoneNumber,location,ShowLocation, email);
+           UserHelper helper=new UserHelper(username,phoneNumber,location,ShowLocation, email);
             reference.child(phoneNumber).setValue(helper);
+
+sp=getSharedPreferences("MyUserProfile",MODE_PRIVATE);
+SharedPreferences.Editor editor=sp.edit();
+            editor.putString("username",username);
+
+            editor.putString("phoneNumber",phoneNumber);
+            editor.putString("location",location);
+            editor.putString("showLocation",ShowLocation);
+            editor.putString("email",email);
+            editor.commit();
+
+
+
 
             Toast.makeText(Register.this
                     ,"data inserted",Toast.LENGTH_SHORT).show();
