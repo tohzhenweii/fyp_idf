@@ -11,6 +11,14 @@ public class UserHelper {
        this.Email=Email;
     }
 
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
     public String getUserName() {
         return userName;
     }
