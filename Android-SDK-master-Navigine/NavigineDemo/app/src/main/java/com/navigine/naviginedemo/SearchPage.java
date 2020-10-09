@@ -90,34 +90,6 @@ public class SearchPage extends Activity {
 
 
 
-
-
-
-
-        //mydb = new MyDbAdapter(this);
-
-
-        ShortcutLists();
-
-        registerForContextMenu(simpleList);
-
-
-        /*
-        if (name !=null && destination != null){
-            Shortcut_list.add(name + " : " + destination);
-            name = null;
-            destination = null;
-        }*/
-
-
-
-
-
-
-
-
-
-
         LVenue1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
