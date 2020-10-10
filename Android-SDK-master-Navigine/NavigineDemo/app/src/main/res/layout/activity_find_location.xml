@@ -64,7 +64,7 @@
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.751" />
+        app:layout_constraintVertical_bias="0.698" />
 
     <TextView
         android:id="@+id/tvUserName"
@@ -78,7 +78,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView15"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.806" />
+        app:layout_constraintVertical_bias="0.782" />
 
     <TextView
         android:id="@+id/tvSharingLocation"
@@ -88,10 +88,10 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.372" />
+        app:layout_constraintVertical_bias="0.54" />
 
     <TextView
         android:id="@+id/tvEmail"
@@ -103,7 +103,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tvSharingLocation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.761" />
+        app:layout_constraintVertical_bias="0.885" />
 
     <TextView
         android:id="@+id/tvPhoneNumber"
@@ -113,10 +113,10 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/tvEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintHorizontal_bias="0.261"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.517" />
+        app:layout_constraintVertical_bias="0.189" />
 
     <TextView
         android:id="@+id/textView7"
@@ -188,22 +188,42 @@
         app:layout_constraintTop_toBottomOf="@+id/button"
         app:layout_constraintVertical_bias="0.06" />
 
-    <TextView
-        android:id="@+id/tvPhoneNumber"
-        android:layout_width="222dp"
-        android:layout_height="wrap_content"
-        android:hint="<FriendPhone>"
-        android:text="TextView"
-        android:textSize="22sp"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="340dp" />
-
     <Button
         android:id="@+id/btnGoFindMeetup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="256dp"
         android:text="Go"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="375dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintVertical_bias="0.942" />
+
+    <EditText
+        android:id="@+id/txtSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Search"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/btnGoFindMeetup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/tvTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="139dp"
+        android:text="Test"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
