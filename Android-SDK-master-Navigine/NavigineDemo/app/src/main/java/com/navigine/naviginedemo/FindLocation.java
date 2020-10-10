@@ -43,7 +43,7 @@ TextView mShareLocation,mEmail,mPhoneNumber,mUserName;
 
     //    User Profile
 SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile", Context.MODE_PRIVATE);
-String name=sp.getString("username","");
+        String name=sp.getString("username","");
         String phoneNumber=sp.getString("phoneNumber","");
         String location=sp.getString("location","");
         String ShowLocation=sp.getString("showLocation","");
@@ -51,7 +51,7 @@ String name=sp.getString("username","");
 
         mUserName.setText(name);
         mPhoneNumber.setText(phoneNumber);
-       mShareLocation.setText(ShowLocation);
+        mShareLocation.setText(ShowLocation);
         mEmail.setText(email);
 
 
@@ -75,7 +75,7 @@ String name=sp.getString("username","");
         //Search
 
 
-
+/*
 
         mNavigation     = NavigineSDK.getNavigation();
         VenueLists();
@@ -110,7 +110,7 @@ String name=sp.getString("username","");
        String L3= com.navigine.naviginesdk.Venue.class.getName();
 
    //     mLocation.setText(L3); */
-
+/*
     }
     public void VenueLists() {
         mLocation = mNavigation.getLocation();
@@ -131,6 +131,6 @@ String name=sp.getString("username","");
         VenueList.addAll(NewVenue);
         VenueList.add(0,"---Select---");
 
-
+*/
     }
 }
