@@ -104,7 +104,7 @@ SharedPreferences sp;
             String location="Notset";
             String ShowLocation="False";
 
-           UserHelper helper=new UserHelper(username,phoneNumber,location,ShowLocation, email);
+           UserHelper helper=new UserHelper(username,phoneNumber,location,ShowLocation,email);
             reference.child(phoneNumber).setValue(helper);
 
 sp=getSharedPreferences("MyUserProfile",MODE_PRIVATE);

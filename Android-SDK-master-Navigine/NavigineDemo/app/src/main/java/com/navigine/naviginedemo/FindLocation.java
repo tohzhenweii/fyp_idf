@@ -6,10 +6,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.navigine.naviginesdk.Location;
 import com.navigine.naviginesdk.LocationInfo;
 import com.navigine.naviginesdk.NavigationThread;
@@ -24,6 +27,9 @@ import java.util.Set;
 
 public class FindLocation extends AppCompatActivity {
 TextView mShareLocation,mEmail,mPhoneNumber,mUserName;
+Button mBtnGo;
+    FirebaseDatabase dB;
+    
     //search variable
     NavigationThread mNavigation = null;
     Spinner LVenue1 = null;
@@ -40,7 +46,7 @@ TextView mShareLocation,mEmail,mPhoneNumber,mUserName;
         mEmail=findViewById(R.id.tvEmail);
         mPhoneNumber=findViewById(R.id.tvPhoneNumber);
         mUserName=findViewById(R.id.tvUserName);
-
+        mBtnGo=findViewById(R.id.btnGotoLocation);
     //    User Profile
 SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile", Context.MODE_PRIVATE);
         String name=sp.getString("username","");
@@ -53,6 +59,12 @@ SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile
         mPhoneNumber.setText(phoneNumber);
         mShareLocation.setText(ShowLocation);
         mEmail.setText(email);
+        mBtnGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dB=FirebaseDatabase.getInstance();
+            }
+        });
 
 
 

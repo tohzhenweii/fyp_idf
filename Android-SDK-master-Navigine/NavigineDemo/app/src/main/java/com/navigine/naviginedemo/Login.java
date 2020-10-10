@@ -1,6 +1,7 @@
 package com.navigine.naviginedemo;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -24,6 +25,7 @@ Button mBtnLogin;
 TextView mCreateBtn;
 ProgressBar ProgressBar;
 FirebaseAuth firebaseAuth;
+    SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,7 @@ FirebaseAuth firebaseAuth;
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email=mEmail.getText().toString().trim();
+                final String email=mEmail.getText().toString().trim();
                 String password=mPassword.getText().toString().trim();
                 String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                 if (!email.matches(emailPattern) && email.length() > 0)
@@ -70,6 +72,11 @@ FirebaseAuth firebaseAuth;
                         if(task.isSuccessful())
                         {
                             Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                            sp=getSharedPreferences("MyUserProfile",MODE_PRIVATE);
+                            SharedPreferences.Editor editor=sp.edit();
+                            editor.putString("email",email);
+                            editor.commit();
                             startActivity(new Intent(getApplicationContext(), SplashActivity.class));
                         }
                         else{
