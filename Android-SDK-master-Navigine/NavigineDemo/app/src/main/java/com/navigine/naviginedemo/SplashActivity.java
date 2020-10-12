@@ -94,7 +94,7 @@ public class SplashActivity extends Activity implements ActivityCompat.OnRequest
           }
           else
           {
-            mStatusLabel.setText("Error initializing NavigineSDK! Please, contact technical support");
+            mStatusLabel.setText("Error initializing NavigineSDK! Your system doesn't have the system pre-requisites to run this app!");
           }
         }
         break;
