@@ -2,13 +2,21 @@ package com.navigine.naviginedemo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +45,10 @@ Button mBtnGo;
     Location mLocation = null;
     int mCurrentSubLocationIndex = 0;
     static final String TAG = "NAVIGINE.Demo";
+    //search
+
+    ArrayList<String>stringArrayList=new ArrayList<>();
+    ArrayAdapter<String>adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,24 +56,27 @@ Button mBtnGo;
         setContentView(R.layout.activity_find_location);
         //user variable
         mTest=findViewById(R.id.tvTest);
-        mShareLocation=findViewById(R.id.tvSharingLocation);
-        mEmail=findViewById(R.id.tvEmail);
-        mPhoneNumber=findViewById(R.id.tvPhoneNumber);
-        mUserName=findViewById(R.id.tvUserName);
+        ListView Lv=findViewById(R.id.ListView);
         mBtnGo=findViewById(R.id.btnGoFindMeetup);
         mSearchUser=findViewById(R.id.txtSearch);
-    //    User Profile
-SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile", Context.MODE_PRIVATE);
-        String name=sp.getString("username","");
-        final String phoneNumber=sp.getString("phoneNumber","");
-        String location=sp.getString("location","");
-        String ShowLocation=sp.getString("showLocation","");
-        String email=sp.getString("email","");
+//search
 
-        mUserName.setText(name);
-        mPhoneNumber.setText(phoneNumber);
-        mShareLocation.setText(ShowLocation);
-        mEmail.setText(email);
+        for(int i=0;i<100;i++)
+        {
+            stringArrayList.add("Item"+i);
+        }
+adapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,stringArrayList);
+Lv.setAdapter(adapter);
+Lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(getApplicationContext(),adapter.getItem(position),Toast.LENGTH_SHORT).show();
+    }
+});
+
+
+
+
         mBtnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -176,5 +191,28 @@ SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile
         VenueList.add(0,"---Select---");
 
 */
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater=getMenuInflater();
+         menu.addSubMenu("d");
+        menuInflater.inflate(R.menu.menu_search,menu);
+        MenuItem menuItem=menu.findItem(R.id.search_view);
+        SearchView searchView=(SearchView) MenuItemCompat.getActionView(menuItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //Filter list
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 }
