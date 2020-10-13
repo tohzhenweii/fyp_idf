@@ -541,6 +541,7 @@ mGotoLocation.setOnClickListener(new OnClickListener() {
     mAdjustModeView.setVisibility(View.VISIBLE);    
     
     mNavigation.setMode(NavigationThread.MODE_NORMAL);
+    //Normal mode for best accuracy. Takes up most battery.
     
     if (D.WRITE_LOGS)
       mNavigation.setLogFile(getLogFile("log"));
