@@ -82,6 +82,7 @@ public class MainActivity extends Activity
 
   // My codes
 
+
   @Override protected void onCreate(Bundle savedInstanceState)
   {//textView5=(TextView) findViewById(R.id.tvLocation);
    // String Location= com.navigine.naviginesdk.Location.class.getName();
@@ -1053,6 +1054,7 @@ mGotoLocation.setOnClickListener(new OnClickListener() {
     if (mDeviceInfo.getPaths() != null && mDeviceInfo.getPaths().size() > 0)
     {
       RoutePath path = mDeviceInfo.getPaths().get(0);
+
       if (path.getPoints().size() >= 2)
       {
         paint.setColor(solidColor);
