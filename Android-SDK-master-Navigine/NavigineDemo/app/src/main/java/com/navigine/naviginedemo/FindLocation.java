@@ -7,6 +7,7 @@ import androidx.core.view.MenuItemCompat;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.icu.text.Transliterator;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,8 +35,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindLocation extends AppCompatActivity {
-TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup;
-
+TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup,mDebug;
+    SharedPreferences sp;
     FirebaseDatabase dB;
     DatabaseReference reference;
     //search variable
@@ -45,8 +46,11 @@ TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup;
     Location mLocation = null;
     int mCurrentSubLocationIndex = 0;
     static final String TAG = "NAVIGINE.Demo";
-    Button mSetting;
+    Button mSetting,mBtnShareLocation;
+    String setLocation;
+
     //search variables
+
 
     ArrayList<String>stringArrayList=new ArrayList<>();
     ArrayAdapter<String>adapter;
@@ -58,9 +62,13 @@ TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup;
         //user variable
         mTest=findViewById(R.id.tvTest);
         mgotoFindMeetup=findViewById(R.id.tvGoToFindMeetUp);
+        mDebug=findViewById(R.id.tvDebug);
         ListView Lv=findViewById(R.id.ListView);
 mSetting=findViewById(R.id.tvSetting);
+mBtnShareLocation=findViewById(R.id.btnShareLocation);
 //search
+        SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile", Context.MODE_PRIVATE);
+        final String phoneNumber=sp.getString("phoneNumber","");
 dB=FirebaseDatabase.getInstance();
 reference= dB.getReference("Venues");
 reference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -87,7 +95,11 @@ Lv.setAdapter(adapter);
 Lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getApplicationContext(),adapter.getItem(position),Toast.LENGTH_SHORT).show();
+        reference=dB.getReference("users");
+        reference.child(phoneNumber).child("location").setValue(setLocation);
+        Toast.makeText(getApplicationContext(),"Location "+adapter.getItem(position)+" has been shared!",Toast.LENGTH_SHORT).show();
+        mDebug.setText("Meet Location: "+adapter.getItem(position));
+        setLocation=adapter.getItem(position);
 
     }
 });
@@ -105,7 +117,13 @@ mSetting.setOnClickListener(new View.OnClickListener() {
     }
 });
 
-
+        mBtnShareLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reference=dB.getReference("users");
+                reference.child(phoneNumber).child("location").setValue(setLocation);
+            }
+        });
 
 
 
