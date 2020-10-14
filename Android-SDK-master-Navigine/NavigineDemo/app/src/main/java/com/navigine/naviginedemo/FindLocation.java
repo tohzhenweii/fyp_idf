@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -33,9 +34,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindLocation extends AppCompatActivity {
-TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest;
-EditText mSearchUser;
-Button mBtnGo;
+TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup;
+
     FirebaseDatabase dB;
     DatabaseReference reference;
     //search variable
@@ -45,7 +45,8 @@ Button mBtnGo;
     Location mLocation = null;
     int mCurrentSubLocationIndex = 0;
     static final String TAG = "NAVIGINE.Demo";
-    //search
+    Button mSetting;
+    //search variables
 
     ArrayList<String>stringArrayList=new ArrayList<>();
     ArrayAdapter<String>adapter;
@@ -56,62 +57,54 @@ Button mBtnGo;
         setContentView(R.layout.activity_find_location);
         //user variable
         mTest=findViewById(R.id.tvTest);
+        mgotoFindMeetup=findViewById(R.id.tvGoToFindMeetUp);
         ListView Lv=findViewById(R.id.ListView);
-        mBtnGo=findViewById(R.id.btnGoFindMeetup);
-        mSearchUser=findViewById(R.id.txtSearch);
+mSetting=findViewById(R.id.tvSetting);
 //search
+dB=FirebaseDatabase.getInstance();
+reference= dB.getReference("Venues");
+reference.addListenerForSingleValueEvent(new ValueEventListener() {
+    @Override
+    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-        for(int i=0;i<100;i++)
+        for(DataSnapshot snapshot1:snapshot.getChildren())
         {
-            stringArrayList.add("Item"+i);
+            stringArrayList.add(snapshot1.getValue().toString());
         }
+
+
+
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError error) {
+
+    }
+});
+
 adapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,stringArrayList);
 Lv.setAdapter(adapter);
 Lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(getApplicationContext(),adapter.getItem(position),Toast.LENGTH_SHORT).show();
+
     }
 });
 
+mgotoFindMeetup.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(getApplicationContext(), FindMeetup.class));
+    }
+});
+mSetting.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(getApplicationContext(), UserProfile.class));
+    }
+});
 
-
-
-        mBtnGo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String FindUser=mSearchUser.getText().toString().trim();
-                dB=FirebaseDatabase.getInstance();
-                reference=dB.getReference("users").child(FindUser).child("location");
-                reference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot)
-                    {
-                        String Location;
-
-                        if(snapshot.exists())
-                        {              Location=snapshot.getValue().toString();
-                        mTest.setText(Location);
-
-
-                        }
-                        else
-                        {
-                            Toast.makeText(FindLocation.this,"User does not exist",Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-
-
-            }
-        });
 
 
 
@@ -196,7 +189,7 @@ Lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater=getMenuInflater();
-         menu.addSubMenu("d");
+
         menuInflater.inflate(R.menu.menu_search,menu);
         MenuItem menuItem=menu.findItem(R.id.search_view);
         SearchView searchView=(SearchView) MenuItemCompat.getActionView(menuItem);
