@@ -7,6 +7,7 @@ import android.Manifest;
 
 import android.app.*;
 import android.content.*;
+import android.graphics.Color;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
@@ -80,21 +81,25 @@ public class SplashActivity extends Activity implements ActivityCompat.OnRequest
                   Intent intent = new Intent(mContext, MainActivity.class);
                   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                   mContext.startActivity(intent);
+                  mStatusLabel.setBackgroundColor(Color.rgb(153, 255, 153));
                 }
                 @Override public void onFailed(int error)
                 {
                   mStatusLabel.setText("Error downloading location 'Navigine Demo' (error " + error + ")! " +
                                        "Please, try again later or contact technical support");
+                  mStatusLabel.setBackgroundColor(Color.rgb(255, 128, 128));
                 }
                 @Override public void onUpdate(int progress)
                 {
                   mStatusLabel.setText("Downloading location: " + progress + "%");
+                  mStatusLabel.setBackgroundColor(Color.rgb(128, 223, 255));
                 }
               });
           }
           else
           {
             mStatusLabel.setText("Error initializing NavigineSDK! Your system doesn't have the system pre-requisites to run this app!");
+            mStatusLabel.setBackgroundColor(Color.rgb(255, 128, 128));
           }
         }
         break;
