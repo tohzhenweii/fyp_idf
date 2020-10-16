@@ -36,6 +36,8 @@
                 android:visibility="invisible"
                 android:textColor="#FFFFFF" />
 
+
+
             <TextView
                 android:id="@+id/debuglocate"
                 android:layout_width="wrap_content"
@@ -44,6 +46,8 @@
                 android:text="TextViewlocate"
                 android:textColor="#B8B8B8"
                 android:visibility="invisible" />
+
+        </com.navigine.naviginesdk.LocationView>
 
             <LinearLayout
                 android:id="@+id/menu"
@@ -96,7 +100,7 @@
 
             </LinearLayout>
 
-        </com.navigine.naviginesdk.LocationView>
+
 
         <TextView android:id="@+id/navigation__info_label"
             android:layout_width="wrap_content"
