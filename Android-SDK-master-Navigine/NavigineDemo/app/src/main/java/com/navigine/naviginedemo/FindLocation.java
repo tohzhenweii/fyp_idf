@@ -79,7 +79,7 @@ reference.addListenerForSingleValueEvent(new ValueEventListener() {
         {
             stringArrayList.add(snapshot1.getValue().toString());
         }
-
+adapter.notifyDataSetChanged();
 
 
     }
