@@ -36,25 +36,18 @@
                 android:visibility="invisible"
                 android:textColor="#FFFFFF" />
 
-            <TextView
-                android:id="@+id/debuglocate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="150sp"
-                android:text="TextViewlocate"
-                android:textColor="#B8B8B8"
-                android:visibility="invisible" />
+        </com.navigine.naviginesdk.LocationView>
 
-            <LinearLayout
-                android:id="@+id/menu"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingStart="10dp"
-                android:paddingTop="20dp">
-                <!--
+        <LinearLayout
+            android:id="@+id/menu"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingStart="10dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+<!--
             <Spinner
                 android:id="@+id/spinner1"
                 android:layout_width="189dp"
@@ -65,38 +58,37 @@
                 />-->
 
 
-                <Button
 
-                    android:id="@+id/btnGotoLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/greenround"
-                    android:fontFamily="@font/hammersmith_one"
-                    android:onClick="Search_Btn"
-                    android:text="GO!"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="#000000"
-                    android:textColorHighlight="#0B0909"
+            <Button
+
+                android:id="@+id/btnGotoLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/greenround"
+                android:fontFamily="@font/hammersmith_one"
+                android:onClick="Search_Btn"
+                android:text="GO!"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#000000"
+                android:textColorHighlight="#0B0909"
 
 
-                    android:textSize="18sp" />
+                android:textSize="18sp" />
 
-                <Button
+            <Button
 
-                    style="@style/Widget.AppCompat.Button"
-                    android:layout_width="142dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/blueround"
-                    android:onClick="ClickVenueList"
-                    android:text="SELECT VENUE"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="142dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/blueround"
+                android:onClick="ClickVenueList"
+                android:text="SELECT VENUE"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
-            </LinearLayout>
-
-        </com.navigine.naviginesdk.LocationView>
+        </LinearLayout>
 
         <TextView android:id="@+id/navigation__info_label"
             android:layout_width="wrap_content"

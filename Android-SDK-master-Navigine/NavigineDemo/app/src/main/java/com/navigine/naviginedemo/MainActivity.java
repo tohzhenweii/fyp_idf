@@ -3,15 +3,12 @@ package com.navigine.naviginedemo;
 import android.app.*;
 import android.content.*;
 import android.graphics.*;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
 import android.util.*;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 
@@ -19,18 +16,9 @@ import java.io.*;
 import java.lang.*;
 import java.util.*;
 
-import com.google.android.gms.common.api.Api;
-import com.google.android.gms.common.api.GoogleApi;
 import com.navigine.naviginesdk.*;
 
-//class FusedLocationProviderClient extends GoogleApi<Api.ApiOptions.NoOptions> {
-//  protected FusedLocationProviderClient(@NonNull Context context, Api<Api.ApiOptions.NoOptions> api, Looper looper) {
-//    super(context, api, looper);
-//
-//  }
-//}
-
-public class MainActivity extends Activity implements LocationListener
+public class MainActivity extends Activity
 {
 
 
@@ -69,7 +57,6 @@ public class MainActivity extends Activity implements LocationListener
   private View          mAdjustModeView           = null;
   private TextView      mCurrentFloorLabel        = null;
   private TextView      mErrorMessageLabel        = null;
-  TextView txtLocal;
   private Handler       mHandler                  = new Handler();
   private float         mDisplayDensity           = 0.0f;
 
@@ -92,14 +79,6 @@ public class MainActivity extends Activity implements LocationListener
   private RectF   mSelectedVenueRect = null;
   private Zone    mSelectedZone   = null;
 
-  protected String latitude,longitude;
-  protected LocationManager locationManager;
-  protected LocationListener locationListener;
-
-//  private FusedLocationProviderClient fusedLocationClient;
-
-
-
 
   // My codes
 
@@ -110,10 +89,6 @@ public class MainActivity extends Activity implements LocationListener
     cat = getIntent().getStringExtra("cat");
     Log.d(TAG, "MainActivity started");
     //My codes for Venue List
-
-//    fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
-
 
 
     super.onCreate(savedInstanceState);
@@ -140,8 +115,6 @@ mGotoLocation.setOnClickListener(new OnClickListener() {
       }
     });
 */
-
-
 
 
 
@@ -1225,30 +1198,5 @@ mGotoLocation.setOnClickListener(new OnClickListener() {
     startActivity(intent);
   }
 
-// Location listener
-  @Override
-  public void onLocationChanged(android.location.Location location) {
-    if(location!=null)
-    {
-      txtLocal = (TextView) findViewById(R.id.debuglocate);
-      txtLocal.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
-    }
-  }
 
-  @Override
-  public void onStatusChanged(String s, int i, Bundle bundle) {
-    Log.d("Latitude","status");
-  }
-
-  @Override
-  public void onProviderEnabled(String s) {
-    Log.d("Latitude","enable");
-
-  }
-
-  @Override
-  public void onProviderDisabled(String s) {
-    Log.d("Latitude","disable");
-  }
-  
 }
