@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradientbg"
+    android:background="?android:attr/colorFocusedHighlight"
     tools:context=".FindLocation">
 
     <TextView
@@ -44,9 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="71dp"
-        android:background="@drawable/bluepurpleround"
         android:text="Settings"
-        android:textColor="#F4F4F4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.739"
@@ -73,18 +71,10 @@
         android:id="@+id/tvGoToFindMeetUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="144dp"
-        android:background="@android:drawable/button_onoff_indicator_off"
-        android:paddingLeft="20sp"
-        android:paddingTop="5sp"
-        android:paddingRight="20sp"
-        android:paddingBottom="5sp"
+        android:layout_marginBottom="172dp"
         android:text="Find Meet Up"
-        android:textColor="#0B2133"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
