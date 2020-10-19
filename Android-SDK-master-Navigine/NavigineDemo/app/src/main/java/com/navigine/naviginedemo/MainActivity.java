@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
   private LocationView mLocationView = null;
   private Button mPrevFloorButton = null;
   private Button mNextFloorButton = null;
-  private Button search_button = null;
+  Button searchBtn;
   private Spinner LVenue = null;
   Button mGotoLocation;
   String text1 = null;
@@ -1125,6 +1125,8 @@ public class MainActivity extends Activity {
 
     startActivity(intent);
   }
+
+
 
   public void Search_Btn(View v) {
     Intent intent = new Intent(this, SearchPage.class);
