@@ -34,10 +34,10 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintHorizontal_bias="0.139"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListView"
-        app:layout_constraintVertical_bias="0.085" />
+        app:layout_constraintVertical_bias="0.087" />
 
     <Button
         android:id="@+id/tvSetting"
@@ -49,10 +49,10 @@
         android:textColor="#F4F4F4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.739"
+        app:layout_constraintHorizontal_bias="0.916"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListView"
-        app:layout_constraintVertical_bias="0.085" />
+        app:layout_constraintVertical_bias="0.087" />
 
     <ListView
         android:id="@+id/ListView"
@@ -97,6 +97,19 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListView"
-        app:layout_constraintVertical_bias="0.364" />
+        app:layout_constraintVertical_bias="0.16" />
+
+    <Button
+        android:id="@+id/btnRecommend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="91dp"
+        android:text="Recommend"
+        app:layout_constraintBottom_toTopOf="@+id/tvGoToFindMeetUp"
+        app:layout_constraintEnd_toStartOf="@+id/tvSetting"
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toEndOf="@+id/btnShareLocation"
+        app:layout_constraintTop_toBottomOf="@+id/ListView"
+        app:layout_constraintVertical_bias="0.023" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

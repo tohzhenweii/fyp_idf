@@ -30,7 +30,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.navigine.naviginesdk.Location;
 import com.navigine.naviginesdk.NavigationThread;
+import com.navigine.naviginesdk.RouteEvent;
+import com.navigine.naviginesdk.RoutePath;
 
+import java.lang.reflect.TypeVariable;
+import java.net.NoRouteToHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +50,7 @@ TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup,mDeb
     Location mLocation = null;
     int mCurrentSubLocationIndex = 0;
     static final String TAG = "NAVIGINE.Demo";
-    Button mSetting,mBtnShareLocation;
+    Button mSetting,mBtnShareLocation,mRecommendLocation;
     String setLocation;
 
     //search variables
@@ -124,7 +128,13 @@ mSetting.setOnClickListener(new View.OnClickListener() {
                 reference.child(phoneNumber).child("location").setValue(setLocation);
             }
         });
+mRecommendLocation.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
 
+
+    }
+});
 
 
 

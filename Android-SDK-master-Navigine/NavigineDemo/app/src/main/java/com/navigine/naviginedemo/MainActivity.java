@@ -347,6 +347,7 @@ public class MainActivity extends Activity {
     mNavigation.cancelTargets();
     mBackView.setVisibility(View.GONE);
     mLocationView.redraw();
+
   }
 
   private void handleClick(float x, float y) {
@@ -711,6 +712,7 @@ public class MainActivity extends Activity {
 
     for (int i = 0; i < subLoc.getVenues().size(); ++i) {
       Venue ven = subLoc.getVenues().get(i);
+      String venname=subLoc.getName();
       Log.d(TAG, String.format(Locale.ENGLISH, " %s == %s ", ven.getName(), text1));
       //Log.d(TAG, String.format(Locale.ENGLISH, " %s == %s ", ven.getCategory().getName(), text1));
       if (ven.getName().equals(text1)) {
