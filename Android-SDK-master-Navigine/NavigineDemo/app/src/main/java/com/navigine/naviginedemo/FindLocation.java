@@ -70,6 +70,8 @@ TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup,mDeb
         ListView Lv=findViewById(R.id.ListView);
 mSetting=findViewById(R.id.tvSetting);
 mBtnShareLocation=findViewById(R.id.btnShareLocation);
+
+mRecommendLocation=findViewById(R.id.btnRecommend);
 //search
         SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile", Context.MODE_PRIVATE);
         final String phoneNumber=sp.getString("phoneNumber","");
