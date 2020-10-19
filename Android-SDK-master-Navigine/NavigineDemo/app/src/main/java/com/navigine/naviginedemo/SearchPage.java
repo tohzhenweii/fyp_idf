@@ -90,6 +90,34 @@ public class SearchPage extends Activity {
 
 
 
+
+
+
+
+        //mydb = new MyDbAdapter(this);
+
+
+        ShortcutLists();
+
+        registerForContextMenu(simpleList);
+
+
+        /*
+        if (name !=null && destination != null){
+            Shortcut_list.add(name + " : " + destination);
+            name = null;
+            destination = null;
+        }*/
+
+
+
+
+
+
+
+
+
+
         LVenue1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -280,8 +308,8 @@ public class SearchPage extends Activity {
             Toast.makeText(SearchPage.this, "Please choose your first destination", Toast.LENGTH_SHORT).show();
         }
         else if (text1 == "---Select---" && text2 == "---Select---"){
-        Toast.makeText(SearchPage.this, "Please choose your destinations", Toast.LENGTH_SHORT).show();
-    }
+            Toast.makeText(SearchPage.this, "Please choose your destinations", Toast.LENGTH_SHORT).show();
+        }
         else if (text1 != "---Select---" && text2 == "---Select---"){
             //Internal Storage
             FileOutputStream fos;

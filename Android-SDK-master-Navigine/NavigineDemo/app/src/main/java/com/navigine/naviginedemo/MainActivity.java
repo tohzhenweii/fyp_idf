@@ -30,7 +30,7 @@ import com.navigine.naviginesdk.*;
 //  }
 //}
 
-public class MainActivity extends Activity {
+public class MainActivity<searchBtn> extends Activity {
 
 
   private static final String TAG = "NAVIGINE.Demo";
@@ -126,6 +126,13 @@ public class MainActivity extends Activity {
       }
     });
 
+    searchBtn = findViewById(R.id.btnGoToSearch);
+    searchBtn.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(getApplicationContext(), SearchPage.class));
+      }
+    });
 
 /*
     LVenue.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -1125,6 +1132,7 @@ public class MainActivity extends Activity {
 
     startActivity(intent);
   }
+
 
 
 
