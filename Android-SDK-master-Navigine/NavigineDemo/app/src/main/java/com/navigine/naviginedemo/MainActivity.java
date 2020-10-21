@@ -13,6 +13,7 @@ import android.util.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 
 import java.io.*;
@@ -22,6 +23,8 @@ import java.util.*;
 import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.GoogleApi;
 import com.navigine.naviginesdk.*;
+
+import org.w3c.dom.Text;
 
 //class FusedLocationProviderClient extends GoogleApi<Api.ApiOptions.NoOptions> {
 //  protected FusedLocationProviderClient(@NonNull Context context, Api<Api.ApiOptions.NoOptions> api, Looper looper) {
@@ -227,26 +230,28 @@ import com.navigine.naviginesdk.*;
                         }
 
                         //create ondouleClick (Yongkai)
-                        @Override
-                        public void onDoubleClick(float x, float y) {
+
+//                        @Override
+                        public void onDoubleClick(int x, int y) {
+                          handleDoubleClick(x, y);
                           //on double click create pin
-                          ImageView imageView = new ImageView(MainActivity.this);
-                          imageView.setBackgroundResource(R.drawable.pin);
+//                          ImageView imageView = new ImageView(MainActivity.this);
+//                          imageView.setBackgroundResource(R.drawable.pin);
+//
+//                          addView(imageView, 40, 40);
 
-                          addView(imageView, 40, 40);
-
-                          super.onDoubleClick(x, y);
+//                          super.onDoubleClick(x, y);
                         }
 
-                        public void addView(ImageView imageView, int width, int height) {
-                          RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(width, height);
-                          layoutParams.setMargins(0, 0, 0, 0);
-
-                          imageView.setLayoutParams(layoutParams);
-                          mLocationView.addView(imageView);
-
-
-                        }
+//                        public void addView(ImageView imageView, int width, int height) {
+//                          RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(width, height);
+//                          layoutParams.setMargins(0, 0, 0, 0);
+//
+//                          imageView.setLayoutParams(layoutParams);
+//                          mLocationView.addView(imageView);
+//
+//
+//                        }
 
                         @Override
                         public void onLongClick(float x, float y) {
@@ -418,6 +423,8 @@ import com.navigine.naviginesdk.*;
 
     private void handleClick(float x, float y) {
       Log.d(TAG, String.format(Locale.ENGLISH, "Click at (%.2f, %.2f)", x, y));
+      TextView debug = (TextView) findViewById(R.id.debuglocate);
+      debug.setText("Clicked");
 
       if (mLocation == null || mCurrentSubLocationIndex < 0)
         return;
@@ -469,6 +476,8 @@ import com.navigine.naviginesdk.*;
     private void handleLongClick(float x, float y) {
       Log.d(TAG, String.format(Locale.ENGLISH, "Long click at (%.2f, %.2f)", x, y));
       makePin(mLocationView.getAbsCoordinates(x, y));
+      TextView debug = (TextView) findViewById(R.id.debuglocate);
+      debug.setText("Hold");
       cancelVenue();
     }
 
@@ -480,6 +489,35 @@ import com.navigine.naviginesdk.*;
     private void handleZoom(float ratio, boolean byTouchEvent) {
       if (byTouchEvent)
         mAdjustTime = NavigineSDK.currentTimeMillis() + ADJUST_TIMEOUT;
+    }
+
+    //yongkai code
+    public void addView(ImageView imageView, int myX, int myY) {
+//      AbsoluteLayout.LayoutParams layoutParams = new AbsoluteLayout.LayoutParams(40, 40);
+      AbsoluteLayout.LayoutParams layoutParams = (AbsoluteLayout.LayoutParams)imageView.getLayoutParams();
+//      layoutParams.setMargins(0, 0, 0, 0);
+      layoutParams.x = myX;
+      layoutParams.y = myY;
+
+      imageView.setLayoutParams(layoutParams);
+      mLocationView.addView(imageView);
+
+
+    }
+
+    private void handleDoubleClick(int x, int y) {
+
+
+        TextView debug = (TextView) findViewById(R.id.debuglocate);
+        debug.setText("Pinned");
+
+        ImageView imageView = new ImageView(MainActivity.this);
+        imageView.setBackgroundResource(R.drawable.pin);
+
+        addView(imageView, x, y);
+
+
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
