@@ -117,6 +117,10 @@ import org.w3c.dom.Text;
     protected LocationManager locationManager;
     protected LocationListener locationListener;
 
+    //qr code variable
+      Button mActivateScanner;
+
+
 //  private FusedLocationProviderClient fusedLocationClient;
 
 
@@ -136,8 +140,14 @@ import org.w3c.dom.Text;
       super.onCreate(savedInstanceState);
       requestWindowFeature(Window.FEATURE_NO_TITLE);
       setContentView(R.layout.activity_main);
-
-      //My codes for dropdown list
+mActivateScanner=findViewById(R.id.btnActivateScanner);
+mActivateScanner.setOnClickListener(new OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(getApplicationContext(),QrScanner.class));
+    }
+});
+      //My codes for search list
 
       mydb = new MyDbAdapter(this);
       mGotoLocation = findViewById(R.id.btnGotoLocation);
