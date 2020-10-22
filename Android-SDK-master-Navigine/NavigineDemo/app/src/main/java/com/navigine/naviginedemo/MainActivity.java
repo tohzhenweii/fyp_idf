@@ -231,9 +231,11 @@ import org.w3c.dom.Text;
 
                         //create ondouleClick (Yongkai)
 
-//                        @Override
-                        public void onDoubleClick(int x, int y) {
-                          handleDoubleClick(x, y);
+                        @Override
+                        public void onDoubleClick(float x, float y) {
+                            int a = Math.round(x);
+                            int b = Math.round(y);
+                          handleDoubleClick(a, b);
                           //on double click create pin
 //                          ImageView imageView = new ImageView(MainActivity.this);
 //                          imageView.setBackgroundResource(R.drawable.pin);
@@ -493,11 +495,21 @@ import org.w3c.dom.Text;
 
     //yongkai code
     public void addView(ImageView imageView, int myX, int myY) {
-//      AbsoluteLayout.LayoutParams layoutParams = new AbsoluteLayout.LayoutParams(40, 40);
-      AbsoluteLayout.LayoutParams layoutParams = (AbsoluteLayout.LayoutParams)imageView.getLayoutParams();
+      RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(50, 50);
+//      AbsoluteLayout.LayoutParams layoutParams = (AbsoluteLayout.LayoutParams)imageView.getLayoutParams();
 //      layoutParams.setMargins(0, 0, 0, 0);
-      layoutParams.x = myX;
-      layoutParams.y = myY;
+
+        if (myX >= 0 && myY >= 0) {
+            layoutParams.setMargins(myX,myY,0,0);
+        }
+
+        else {
+          TextView debug = (TextView) findViewById(R.id.debuglocate);
+          debug.setText("ERROR. please feedback and wait for new update.");
+        }
+
+//      layoutParams.x = myX;
+//      layoutParams.y = myY;
 
       imageView.setLayoutParams(layoutParams);
       mLocationView.addView(imageView);
@@ -1010,6 +1022,8 @@ import org.w3c.dom.Text;
         }
 
       }
+
+
 
       if (mSelectedVenue != null) {
 
