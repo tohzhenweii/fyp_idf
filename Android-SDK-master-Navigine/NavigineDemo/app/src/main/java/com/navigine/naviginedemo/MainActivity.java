@@ -1,7 +1,9 @@
 package com.navigine.naviginedemo;
 
+import android.Manifest;
 import android.app.*;
 import android.content.*;
+import android.content.pm.PackageManager;
 import android.graphics.*;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -14,6 +16,8 @@ import android.util.*;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 
 import java.io.*;
@@ -96,6 +100,7 @@ import org.w3c.dom.Text;
 
     private boolean mAdjustMode = false;
     private long mAdjustTime = 0;
+    private int CAMERA_PERMISSION=1;
 
     // Location parameters
     private Location mLocation = null;
@@ -144,9 +149,15 @@ mActivateScanner=findViewById(R.id.btnActivateScanner);
 mActivateScanner.setOnClickListener(new OnClickListener() {
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(getApplicationContext(),QrScanner.class));
+        if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_GRANTED)
+        {
+        startActivity(new Intent(getApplicationContext(),QrScanner.class));}
+        else{
+requestCameraPermission();
+        }
     }
 });
+
       //My codes for search list
 
       mydb = new MyDbAdapter(this);
@@ -1260,8 +1271,38 @@ mActivateScanner.setOnClickListener(new OnClickListener() {
       //intent.putExtra("VenueList", (Serializable) VenueList);
       startActivity(intent);
     }
+      private void requestCameraPermission()
+      {
+if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.CAMERA)){
+new AlertDialog.Builder(this).setTitle("Permission Needed").setMessage("Camera Permission is needed to use Qr code Scanning Feature").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.CAMERA},CAMERA_PERMISSION);
+    }
+}).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        dialog.dismiss();
+    }
+}).create().show();
+}else
+{
+    ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},CAMERA_PERMISSION);
+}
+      }
 
-// Location listener
+      @Override
+      public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+          if (requestCode == CAMERA_PERMISSION)
+           {
+              if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){Toast.makeText(this,"Permission Granted",Toast.LENGTH_SHORT).show();}
+else
+              {
+                  Toast.makeText(this,"Please enable Camera Access!",Toast.LENGTH_SHORT).show();
+              }
+          }
+      }
+      // Location listener
 // Yongkai's code
 //  @Override
 //  public void onLocationChanged(android.location.Location location) {

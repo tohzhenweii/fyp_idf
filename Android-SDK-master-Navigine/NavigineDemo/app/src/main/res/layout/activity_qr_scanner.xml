@@ -23,7 +23,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.406"
+        app:layout_constraintVertical_bias="0.353"
         app:maskColor="#77000000">
 
         <TextView
@@ -35,7 +35,7 @@
     </com.budiyev.android.codescanner.CodeScannerView>
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/ScanResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Scan Qr Code To Go To Location"
@@ -48,6 +48,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.573" />
+
+    <TextView
+        android:id="@+id/tvScanResult"
+        android:layout_width="51dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Scannerview"
+        app:layout_constraintVertical_bias="0.226" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
