@@ -19,17 +19,24 @@ TextView mResultData;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_scanner);
-        mscannerView=findViewById(R.id.Scannerview);
-mcodeScanner=new CodeScanner(this,mscannerView);
-mResultData=findViewById(R.id.tvScanResult);
-mcodeScanner.setDecodeCallback(new DecodeCallback() {
-    @Override
-    public void onDecoded(@NonNull Result result) {
-        
-    }
+        mscannerView = findViewById(R.id.Scannerview);
+        mcodeScanner = new CodeScanner(this, mscannerView);
+        mResultData = findViewById(R.id.tvScanResult);
+        mcodeScanner.setDecodeCallback(new DecodeCallback() {
+            @Override
+            public void onDecoded(@NonNull final Result result) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mResultData.setText((result.getText()));
+                    }
 
-});
+                });
+        }
 
+        });
+        onResume();
+        mcodeScanner.startPreview();
     }
 
 }

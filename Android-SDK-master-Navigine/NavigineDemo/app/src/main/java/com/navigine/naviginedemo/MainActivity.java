@@ -155,6 +155,7 @@ mActivateScanner.setOnClickListener(new OnClickListener() {
         startActivity(new Intent(getApplicationContext(),QrScanner.class));}
         else{
 requestCameraPermission();
+
         }
     }
 });
