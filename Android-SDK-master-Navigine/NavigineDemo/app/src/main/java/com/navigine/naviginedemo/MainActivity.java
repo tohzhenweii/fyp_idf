@@ -1,6 +1,7 @@
 package com.navigine.naviginedemo;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.*;
 import android.content.pm.PackageManager;
@@ -405,10 +406,51 @@ requestCameraPermission();
 
     public void onZoomIn(View v) {
       mLocationView.zoomBy(1.25f);
+        int pin_imageview_id = 123;
+      View pinView = findViewById(pin_imageview_id);
+
+        pinView.setScaleX(pinView.getScaleX()-0.02f);
+        pinView.setScaleY(pinView.getScaleY()-0.02f);
+
+        TextView debug = (TextView) findViewById(R.id.debuglocate);
+        if(pinView.getScaleX() == 1 || pinView.getScaleY() == 1) {
+            debug.setText("not changed");
+        }
+        else {
+            debug.setText("changed");
+        }
+
+        if (pinView.getScaleY() <= 0.62f){
+            pinView.setScaleX(pinView.getScaleX()+0.02f);
+            pinView.setScaleY(pinView.getScaleY()+0.02f);
+        }
+
+        //create statement to change plot xy
+
     }
+
+    //alternative setonTouch to zoom for pin
+//    imageView.setOnTouchListener(new MoveViewTouchListener(imageView));
 
     public void onZoomOut(View v) {
       mLocationView.zoomBy(0.8f);
+        int pin_imageview_id = 123;
+        View pinView = findViewById(pin_imageview_id);
+        pinView.setScaleX(pinView.getScaleX()+0.025f);
+        pinView.setScaleY(pinView.getScaleY()+0.025f);
+        TextView debug = (TextView) findViewById(R.id.debuglocate);
+        if(pinView.getScaleX() == 1 || pinView.getScaleY() == 1) {
+            debug.setText("not changed");
+        }
+        else {
+            debug.setText("changed");
+        }
+
+        if (pinView.getScaleY() > 1.0f){
+            pinView.setScaleX(pinView.getScaleX()-0.025f);
+            pinView.setScaleY(pinView.getScaleY()-0.025f);
+        }
+
     }
 
 
@@ -516,7 +558,7 @@ requestCameraPermission();
 
     //yongkai code
     public void addView(ImageView imageView, int myX, int myY) {
-      RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(50, 50);
+      RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(70, 70);
 //      AbsoluteLayout.LayoutParams layoutParams = (AbsoluteLayout.LayoutParams)imageView.getLayoutParams();
 //      layoutParams.setMargins(0, 0, 0, 0);
 
@@ -533,8 +575,22 @@ requestCameraPermission();
 //      layoutParams.y = myY;
 
       imageView.setLayoutParams(layoutParams);
+
+//    View locationnew = findViewById(navigation__location_view);
+
       mLocationView.addView(imageView);
 
+      int pin_imageview_id = 123;
+
+      ImageView pinned = imageView;
+      imageView.setId(pin_imageview_id);
+
+
+
+      // code handle zoom and scroll using method invoke listener
+//      if (RunOnce) {
+//
+//        }
 
     }
 
@@ -544,7 +600,7 @@ requestCameraPermission();
         TextView debug = (TextView) findViewById(R.id.debuglocate);
         debug.setText("Pinned");
 
-        ImageView imageView = new ImageView(MainActivity.this);
+        ImageView imageView = new ImageView( MainActivity.this);
         imageView.setBackgroundResource(R.drawable.pin);
 
         addView(imageView, x, y);
