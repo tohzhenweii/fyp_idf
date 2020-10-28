@@ -408,25 +408,32 @@ requestCameraPermission();
     public void onZoomIn(View v) {
       mLocationView.zoomBy(1.25f);
         int pin_imageview_id = 123;
-      View pinView = findViewById(pin_imageview_id);
+        try {
+            View pinView = findViewById(pin_imageview_id);
 
-        pinView.setScaleX(pinView.getScaleX()-0.02f);
-        pinView.setScaleY(pinView.getScaleY()-0.02f);
+            pinView.setScaleX(pinView.getScaleX()-0.02f);
+            pinView.setScaleY(pinView.getScaleY()-0.02f);
 
-        TextView debug = (TextView) findViewById(R.id.debuglocate);
-        if(pinView.getScaleX() == 1 || pinView.getScaleY() == 1) {
-            debug.setText("not changed");
+            TextView debug = (TextView) findViewById(R.id.debuglocate);
+            if(pinView.getScaleX() == 1 || pinView.getScaleY() == 1) {
+                debug.setText("not changed");
+            }
+            else {
+                debug.setText("changed");
+            }
+
+            if (pinView.getScaleY() <= 0.62f){
+                pinView.setScaleX(pinView.getScaleX()+0.02f);
+                pinView.setScaleY(pinView.getScaleY()+0.02f);
+            }
+
+            //create statement to change plot xy
         }
-        else {
-            debug.setText("changed");
+
+        catch (Exception e){
+
         }
 
-        if (pinView.getScaleY() <= 0.62f){
-            pinView.setScaleX(pinView.getScaleX()+0.02f);
-            pinView.setScaleY(pinView.getScaleY()+0.02f);
-        }
-
-        //create statement to change plot xy
 
     }
 
@@ -436,20 +443,24 @@ requestCameraPermission();
     public void onZoomOut(View v) {
       mLocationView.zoomBy(0.8f);
         int pin_imageview_id = 123;
-        View pinView = findViewById(pin_imageview_id);
-        pinView.setScaleX(pinView.getScaleX()+0.025f);
-        pinView.setScaleY(pinView.getScaleY()+0.025f);
-        TextView debug = (TextView) findViewById(R.id.debuglocate);
-        if(pinView.getScaleX() == 1 || pinView.getScaleY() == 1) {
-            debug.setText("not changed");
-        }
-        else {
-            debug.setText("changed");
-        }
+        try {
+            View pinView = findViewById(pin_imageview_id);
+            pinView.setScaleX(pinView.getScaleX() + 0.025f);
+            pinView.setScaleY(pinView.getScaleY() + 0.025f);
+            TextView debug = (TextView) findViewById(R.id.debuglocate);
+            if (pinView.getScaleX() == 1 || pinView.getScaleY() == 1) {
+                debug.setText("not changed");
+            } else {
+                debug.setText("changed");
+            }
 
-        if (pinView.getScaleY() > 1.0f){
-            pinView.setScaleX(pinView.getScaleX()-0.025f);
-            pinView.setScaleY(pinView.getScaleY()-0.025f);
+            if (pinView.getScaleY() > 1.0f) {
+                pinView.setScaleX(pinView.getScaleX() - 0.025f);
+                pinView.setScaleY(pinView.getScaleY() - 0.025f);
+            }
+        }
+        catch (Exception e){
+
         }
 
     }
@@ -571,6 +582,7 @@ requestCameraPermission();
           TextView debug = (TextView) findViewById(R.id.debuglocate);
           debug.setText("ERROR. please feedback and wait for new update.");
         }
+
 
 //      layoutParams.x = myX;
 //      layoutParams.y = myY;
