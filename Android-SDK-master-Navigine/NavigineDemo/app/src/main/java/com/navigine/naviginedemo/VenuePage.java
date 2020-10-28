@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -39,7 +40,7 @@ public class VenuePage extends Activity {
     ListView simpleList;
     private static final String TAG = "NAVIGINE.Demo";
 
-
+    Button rbtn;
 
 
 
@@ -76,7 +77,13 @@ public class VenuePage extends Activity {
 
         });
 
-
+        rbtn = findViewById(R.id.want_toreview);
+        rbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Rating1.class));
+            }
+        });
 
 
     }
@@ -97,6 +104,13 @@ public class VenuePage extends Activity {
     {
         Intent intent = new Intent(this, VenueClass.class);
         intent.putExtra("List","Want_To_Go");
+        startActivity(intent);
+    }
+
+    public void reviewMethod(View v)
+    {
+        Intent intent = new Intent(this, Rating1.class);
+
         startActivity(intent);
     }
 
