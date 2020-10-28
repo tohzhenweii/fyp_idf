@@ -411,21 +411,27 @@ requestCameraPermission();
         try {
             View pinView = findViewById(pin_imageview_id);
 
-            pinView.setScaleX(pinView.getScaleX()-0.02f);
-            pinView.setScaleY(pinView.getScaleY()-0.02f);
+            pinView.setScaleX(pinView.getScaleX()-0.025f);
+            pinView.setScaleY(pinView.getScaleY()-0.025f);
 
             TextView debug = (TextView) findViewById(R.id.debuglocate);
+
+
+            if (pinView.getScaleY() <= 0.62f){
+                pinView.setScaleX(pinView.getScaleX()+0.02f);
+                pinView.setScaleY(pinView.getScaleY()+0.02f);
+//                pinView.setY(pinView.getY()/1.05f);
+//                pinView.setX(pinView.getX()/1.025f);
+            }
+
             if(pinView.getScaleX() == 1 || pinView.getScaleY() == 1) {
                 debug.setText("not changed");
             }
             else {
                 debug.setText("changed");
             }
-
-            if (pinView.getScaleY() <= 0.62f){
-                pinView.setScaleX(pinView.getScaleX()+0.02f);
-                pinView.setScaleY(pinView.getScaleY()+0.02f);
-            }
+//            pinView.setY(pinView.getY()*1.05f);
+//            pinView.setX(pinView.getX()*1.025f);
 
             //create statement to change plot xy
         }
@@ -445,19 +451,27 @@ requestCameraPermission();
         int pin_imageview_id = 123;
         try {
             View pinView = findViewById(pin_imageview_id);
-            pinView.setScaleX(pinView.getScaleX() + 0.025f);
-            pinView.setScaleY(pinView.getScaleY() + 0.025f);
+            pinView.setScaleX(pinView.getScaleX() + 0.02f);
+            pinView.setScaleY(pinView.getScaleY() + 0.02f);
             TextView debug = (TextView) findViewById(R.id.debuglocate);
+
+
+            if (pinView.getScaleY() >= 1.0f) {
+                pinView.setScaleX(pinView.getScaleX() - 0.025f);
+                pinView.setScaleY(pinView.getScaleY() - 0.025f);
+//                pinView.setY(pinView.getY()*1.05f);
+//                pinView.setX(pinView.getX()*1.025f);
+            }
+
             if (pinView.getScaleX() == 1 || pinView.getScaleY() == 1) {
                 debug.setText("not changed");
             } else {
                 debug.setText("changed");
             }
+//            pinView.setY(pinView.getY()/1.05f);
+//            pinView.setX(pinView.getX()/1.025f);
 
-            if (pinView.getScaleY() > 1.0f) {
-                pinView.setScaleX(pinView.getScaleX() - 0.025f);
-                pinView.setScaleY(pinView.getScaleY() - 0.025f);
-            }
+            //create statement to change plot xy
         }
         catch (Exception e){
 
