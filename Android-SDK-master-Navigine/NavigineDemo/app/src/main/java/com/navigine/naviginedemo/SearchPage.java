@@ -1,8 +1,10 @@
 package com.navigine.naviginedemo;
 
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.*;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -13,10 +15,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.google.firebase.database.snapshot.Index;
 import com.navigine.naviginesdk.Location;
 import com.navigine.naviginesdk.NavigationThread;
 import com.navigine.naviginesdk.NavigineSDK;
@@ -33,12 +37,26 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
 public class SearchPage extends Activity {
     MyDbAdapter mydb;
 
     private Location mLocation = null;
     private NavigationThread mNavigation = null;
-    private int mCurrentSubLocationIndex = 0;
+
+//    SharedPreferences settings;
+
+
+
+////    SharedPreferences sharedPreferences = getSharedPreferences("MyUserProfile",Context.MODE_PRIVATE);
+//
+//    SharedPreferences sharedPreferences =getApplicationContext().getSharedPreferences("FloorPref", Context.MODE_PRIVATE);
+//    String FloorNum= sharedPreferences.getString("Floor","");
+
+
+
+    private int mCurrentSubLocationIndex;
+
     private Spinner LVenue1 = null;
     private Spinner LVenue2 = null;
     public String text1 = null;
@@ -57,17 +75,27 @@ public class SearchPage extends Activity {
     List<String> testing = new ArrayList<String>();
     ListView simpleList;
 
+    int MyFloor;
+
     //ArrayList array_list = mydb.getAllCotacts();
 
     private static final String TAG = "NAVIGINE.Demo";
 
 
-
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mNavigation     = NavigineSDK.getNavigation();
         VenueLists();
+
+//        settings=this.getSharedPreferences("floorpreferences", MODE_PRIVATE);
+//        String floornumber = settings.getString("Floor","");
+//        TextView debug = findViewById(R.id.searchdebug);
+//        debug.setText(floornumber);
+//        mCurrentSubLocationIndex = Integer.parseInt(floornumber);
+//        TextView locationIndex = findViewById(R.id.navigation__current_floor_label);
+//        MyFloor = Integer.parseInt(locationIndex.toString());
 
         setContentView(R.layout.search);
         LVenue1 = (Spinner) findViewById(R.id.spinner1);
@@ -254,6 +282,17 @@ public class SearchPage extends Activity {
 
     public void VenueLists() {
         mLocation = mNavigation.getLocation();
+
+        // findviewbyid wont work because it's current page has no such id.
+
+//        TextView myfloor = ;
+//        String MyFloor = myfloor.toString();
+//        //Code to change the floor level
+//        if (MyFloor == "3"){
+//            mCurrentSubLocationIndex = 1;
+//        }
+
+
         SubLocation subLoc = mLocation.getSubLocations().get(mCurrentSubLocationIndex);
 
 
