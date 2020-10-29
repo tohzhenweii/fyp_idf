@@ -9,7 +9,7 @@
 
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/Scannerview"
-        android:layout_width="410dp"
+        android:layout_width="wrap_content"
         android:layout_height="502dp"
         app:frameAspectRatioHeight="1"
         app:frameAspectRatioWidth="1"
@@ -51,8 +51,9 @@
 
     <TextView
         android:id="@+id/tvScanResult"
-        android:layout_width="51dp"
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,7 +1,6 @@
 package com.navigine.naviginedemo;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.*;
 import android.content.pm.PackageManager;
@@ -16,7 +15,6 @@ import android.util.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -25,11 +23,7 @@ import java.io.*;
 import java.lang.*;
 import java.util.*;
 
-import com.google.android.gms.common.api.Api;
-import com.google.android.gms.common.api.GoogleApi;
 import com.navigine.naviginesdk.*;
-
-import org.w3c.dom.Text;
 
 //class FusedLocationProviderClient extends GoogleApi<Api.ApiOptions.NoOptions> {
 //  protected FusedLocationProviderClient(@NonNull Context context, Api<Api.ApiOptions.NoOptions> api, Looper looper) {
@@ -124,7 +118,7 @@ import org.w3c.dom.Text;
     protected LocationListener locationListener;
 
     //qr code variable
-      Button mActivateScanner;
+      Button mActivateScanner,mTest;
 
 
 //  private FusedLocationProviderClient fusedLocationClient;
@@ -146,6 +140,38 @@ import org.w3c.dom.Text;
       super.onCreate(savedInstanceState);
       requestWindowFeature(Window.FEATURE_NO_TITLE);
       setContentView(R.layout.activity_main);
+      //Used  to test feature
+      mTest=findViewById(R.id.btnTest);
+mTest.setOnClickListener(new OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+        //text = "L306";//week9
+
+        SubLocation subLoc = mLocation.getSubLocations().get(0);
+
+        for(int i = 0; i < subLoc.getVenues().size(); ++i) {
+            Venue ven = subLoc.getVenues().get(i);
+            Log.d(TAG, String.format(Locale.ENGLISH, " %s == %s ", ven.getName(), text1));
+
+            if (ven.getName().equals("L437 Lab")) {
+                Log.d(TAG, String.format(Locale.ENGLISH, "Got it"));
+                Log.d(TAG, String.format(Locale.ENGLISH, "Click at (%.2f, %.2f)", ven.getX(), ven.getY()));
+                //
+                handleClick(ven.getX(), ven.getY());
+                mSelectedVenue = subLoc.getVenues().get(i);
+                mTargetVenue = mSelectedVenue;
+                mNextRoute.setVisibility(View.INVISIBLE);
+                mNavigation.setTarget(new LocationPoint(mLocation.getId(), subLoc.getId(), mTargetVenue.getX(), mTargetVenue.getY()));
+            }
+
+
+
+        }
+        return;
+
+}
+});
 mActivateScanner=findViewById(R.id.btnActivateScanner);
 mActivateScanner.setOnClickListener(new OnClickListener() {
     @Override
@@ -388,7 +414,7 @@ requestCameraPermission();
     public void toggleAdjustMode(View v) {
       mAdjustMode = !mAdjustMode;
       mAdjustTime = 0;
-      Button adjustModeButton = (Button) findViewById(R.id.navigation__adjust_mode_button);
+      Button adjustModeButton = (Button) findViewById(R.id.btnTest);
       adjustModeButton.setBackgroundResource(mAdjustMode ?
               R.drawable.btn_adjust_mode_on :
               R.drawable.btn_adjust_mode_off);

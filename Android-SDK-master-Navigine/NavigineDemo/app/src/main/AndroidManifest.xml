@@ -20,7 +20,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Rating1"></activity>
+        <activity android:name=".Test"></activity>
+        <activity android:name=".Rating1" />
         <activity android:name=".QrScanner" />
         <activity android:name=".FindMeetup" />
         <activity android:name=".UserProfile" />

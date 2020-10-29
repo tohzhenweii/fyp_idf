@@ -353,7 +353,7 @@
                 android:layout_height="10dp"/>
 
             <Button
-                android:id="@+id/navigation__adjust_mode_button"
+                android:id="@+id/btnTest"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/refresh"
