@@ -8,6 +8,7 @@ import android.graphics.*;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.*;
+import android.se.omapi.Session;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
@@ -78,6 +79,9 @@ import com.navigine.naviginesdk.*;
     TextView textView5;
     List<String> VenueList = new ArrayList<String>();
 
+    public static final String floorpreferences = "FloorPref";
+      SharedPreferences sharedpreferences;
+
 
     private View mBackView = null;
     private View mNextRoute = null;
@@ -133,6 +137,7 @@ import com.navigine.naviginesdk.*;
       cat = getIntent().getStringExtra("cat");
       Log.d(TAG, "MainActivity started");
       //My codes for Venue List
+        sharedpreferences = getSharedPreferences(floorpreferences, Context.MODE_PRIVATE);
 
 //    fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -843,6 +848,8 @@ requestCameraPermission();
 
       mAdjustTime = 0;
       mCurrentSubLocationIndex = index;
+
+
       mCurrentFloorLabel.setText(String.format(Locale.ENGLISH, "%d", mCurrentSubLocationIndex + 3));
 
       if (mCurrentSubLocationIndex > 0) {
@@ -1376,8 +1383,16 @@ requestCameraPermission();
 
 
     public void Search_Btn(View v) {
-      Intent intent = new Intent(this, SearchPage.class);
+
+
+      String num = mCurrentFloorLabel.getText().toString();
+
+      SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("Floor",num);
+        editor.commit();
+
       //intent.putExtra("VenueList", (Serializable) VenueList);
+        Intent intent = new Intent(getApplicationContext(), SearchPage.class);
       startActivity(intent);
     }
       private void requestCameraPermission()
