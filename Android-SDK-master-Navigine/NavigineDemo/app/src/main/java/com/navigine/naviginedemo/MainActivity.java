@@ -817,7 +817,7 @@ requestCameraPermission();
 
       mAdjustTime = 0;
       mCurrentSubLocationIndex = index;
-      mCurrentFloorLabel.setText(String.format(Locale.ENGLISH, "%d", mCurrentSubLocationIndex));
+      mCurrentFloorLabel.setText(String.format(Locale.ENGLISH, "%d", mCurrentSubLocationIndex + 3));
 
       if (mCurrentSubLocationIndex > 0) {
         mPrevFloorButton.setEnabled(true);

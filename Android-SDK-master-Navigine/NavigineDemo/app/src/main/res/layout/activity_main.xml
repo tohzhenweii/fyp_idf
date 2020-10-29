@@ -277,11 +277,11 @@
                 android:background="#90aaaaaa">
 
                 <Button
-                    android:id="@+id/navigation__prev_floor_button"
+                    android:id="@+id/navigation__next_floor_button"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/nextfloor"
-                    android:onClick="onPrevFloor" />
+                    android:onClick="onNextFloor" />
             </RelativeLayout>
 
             <!-- Current floor label -->
@@ -302,11 +302,11 @@
                 android:background="#90aaaaaa">
 
                 <Button
-                    android:id="@+id/navigation__next_floor_button"
+                    android:id="@+id/navigation__prev_floor_button"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/previousfloor"
-                    android:onClick="onNextFloor" />
+                    android:onClick="onPrevFloor" />
             </FrameLayout>
 
             <View
