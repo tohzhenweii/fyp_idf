@@ -1385,10 +1385,10 @@ requestCameraPermission();
     public void Search_Btn(View v) {
 
 
-      String num = mCurrentFloorLabel.getText().toString();
+      Integer num = mCurrentSubLocationIndex + 3;
 
       SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putString("Floor",num);
+        editor.putInt("Floor",num);
         editor.commit();
 
       //intent.putExtra("VenueList", (Serializable) VenueList);
