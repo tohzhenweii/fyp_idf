@@ -77,7 +77,7 @@ mRecommendLocation=findViewById(R.id.btnRecommend);
         final String phoneNumber=sp.getString("phoneNumber","");
 dB=FirebaseDatabase.getInstance();
 reference= dB.getReference("Venues");
-reference.addListenerForSingleValueEvent(new ValueEventListener() {
+reference.addValueEventListener(new ValueEventListener() {
     @Override
     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
