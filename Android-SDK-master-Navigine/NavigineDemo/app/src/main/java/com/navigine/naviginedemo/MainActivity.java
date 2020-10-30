@@ -661,8 +661,22 @@ requestCameraPermission();
         ImageView imageView = new ImageView( MainActivity.this);
         imageView.setBackgroundResource(R.drawable.pin);
 
-        addView(imageView, x, y);
 
+
+        int pin_imageview_id = 123;
+
+        try {
+            View pinView = findViewById(pin_imageview_id);
+            if (pinView != null) {
+                debug.setText("Unpinned");
+                ((ViewGroup) pinView.getParent()).removeView(pinView);
+            }
+            else {
+                addView(imageView, x, y);
+            }
+        }catch (Exception e){
+
+        }
 
 
     }
@@ -1385,11 +1399,11 @@ requestCameraPermission();
     public void Search_Btn(View v) {
 
 
-      Integer num = mCurrentSubLocationIndex + 3;
+      int num = mCurrentSubLocationIndex;
 
       SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putInt("Floor",num);
-        editor.commit();
+        editor.putInt("Floor",0);
+        editor.apply();
 
       //intent.putExtra("VenueList", (Serializable) VenueList);
         Intent intent = new Intent(getApplicationContext(), SearchPage.class);
