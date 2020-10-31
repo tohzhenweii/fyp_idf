@@ -159,7 +159,7 @@ mTest.setOnClickListener(new OnClickListener() {
             Venue ven = subLoc.getVenues().get(i);
             Log.d(TAG, String.format(Locale.ENGLISH, " %s == %s ", ven.getName(), text1));
 
-            if (ven.getName().equals("L437 Lab")) {
+            if (ven.getName().equals("L330")) {
                 Log.d(TAG, String.format(Locale.ENGLISH, "Got it"));
                 Log.d(TAG, String.format(Locale.ENGLISH, "Click at (%.2f, %.2f)", ven.getX(), ven.getY()));
                 //
