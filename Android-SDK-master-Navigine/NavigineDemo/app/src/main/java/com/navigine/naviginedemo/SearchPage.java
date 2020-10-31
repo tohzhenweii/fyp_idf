@@ -48,10 +48,10 @@ public class SearchPage extends Activity {
 
 
 
-////    SharedPreferences sharedPreferences = getSharedPreferences("MyUserProfile",Context.MODE_PRIVATE);
-//
+//    SharedPreferences sharedPreferences = getSharedPreferences("MyUserProfile",Context.MODE_PRIVATE);
+
 //    SharedPreferences sharedPreferences =getApplicationContext().getSharedPreferences("FloorPref", Context.MODE_PRIVATE);
-//    String FloorNum= sharedPreferences.getString("Floor","");
+//    Integer FloorNum= sharedPreferences.getInt("Floor",0);
 
 
 
