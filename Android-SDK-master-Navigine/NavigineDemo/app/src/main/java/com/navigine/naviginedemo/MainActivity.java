@@ -136,8 +136,9 @@ import com.navigine.naviginesdk.*;
       // String Location= com.navigine.naviginesdk.Location.class.getName();
       cat = getIntent().getStringExtra("cat");
       Log.d(TAG, "MainActivity started");
+
       //My codes for Venue List
-//        sharedpreferences = getSharedPreferences(floorpreferences, Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences(floorpreferences, Context.MODE_PRIVATE);
 
 //    fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -146,6 +147,7 @@ import com.navigine.naviginesdk.*;
       requestWindowFeature(Window.FEATURE_NO_TITLE);
       setContentView(R.layout.activity_main);
       //Used  to test feature
+
       mTest=findViewById(R.id.btnTest);
 mTest.setOnClickListener(new OnClickListener() {
     @Override
@@ -327,7 +329,7 @@ requestCameraPermission();
                         @Override
                         public void onDraw(Canvas canvas) {
 
-                          drawZones(canvas);
+//                          drawZones(canvas);
                           drawPoints(canvas);
                           drawVenues(canvas);
                           drawDevice(canvas);
@@ -1424,10 +1426,18 @@ requestCameraPermission();
         editor.putInt("Floor",0);
         editor.apply();
 
+
+//        String floornumber = settings.getString("Floor","");
+
       //intent.putExtra("VenueList", (Serializable) VenueList);
         Intent intent = new Intent(getApplicationContext(), SearchPage.class);
+
+
+
       startActivity(intent);
     }
+
+
 
       private void requestCameraPermission()
       {
