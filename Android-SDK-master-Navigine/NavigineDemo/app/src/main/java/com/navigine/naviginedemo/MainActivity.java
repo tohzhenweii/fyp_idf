@@ -54,6 +54,7 @@ import com.navigine.naviginesdk.*;
 
   public class MainActivity<searchBtn> extends Activity {
 
+      private int numberforfun;
 
     private static final String TAG = "NAVIGINE.Demo";
     private static final String NOTIFICATION_CHANNEL = "NAVIGINE_DEMO_NOTIFICATION_CHANNEL";
