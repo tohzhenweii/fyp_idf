@@ -103,9 +103,10 @@ Lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         reference=dB.getReference("users");
         reference.child(phoneNumber).child("location").setValue(setLocation);
-        Toast.makeText(getApplicationContext(),"Location "+adapter.getItem(position)+" has been shared!",Toast.LENGTH_SHORT).show();
+
         mDebug.setText("Meet Location: "+adapter.getItem(position));
         setLocation=adapter.getItem(position);
+        Toast.makeText(getApplicationContext(),"Location "+adapter.getItem(position)+" has been shared!",Toast.LENGTH_SHORT).show();
 
     }
 });

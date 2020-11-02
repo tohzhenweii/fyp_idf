@@ -44,12 +44,12 @@ public class SearchPage extends Activity {
     private Location mLocation = null;
     private NavigationThread mNavigation = null;
 
-//    SharedPreferences settings;
+    SharedPreferences settings;
 
 
 
 //    SharedPreferences sharedPreferences = getSharedPreferences("MyUserProfile",Context.MODE_PRIVATE);
-
+//
 //    SharedPreferences sharedPreferences =getApplicationContext().getSharedPreferences("FloorPref", Context.MODE_PRIVATE);
 //    Integer FloorNum= sharedPreferences.getInt("Floor",0);
 
@@ -86,14 +86,21 @@ public class SearchPage extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        settings=this.getSharedPreferences("floorpreferences", MODE_PRIVATE);
+//        String floornumber = settings.getString("Floor","");
+        //        TextView debug = findViewById(R.id.searchdebug);
+//        debug.setText(floornumber);
+
         mNavigation     = NavigineSDK.getNavigation();
         VenueLists();
 
-//        settings=this.getSharedPreferences("floorpreferences", MODE_PRIVATE);
-//        String floornumber = settings.getString("Floor","");
-//        TextView debug = findViewById(R.id.searchdebug);
-//        debug.setText(floornumber);
-//        mCurrentSubLocationIndex = Integer.parseInt(floornumber);
+
+
+//        TextView debug2 = findViewById(R.id.debuglocate);
+//        debug2.setText(floornumber);
+
+
+//        mCurrentSubLocationIndex = 1;
 //        TextView locationIndex = findViewById(R.id.navigation__current_floor_label);
 //        MyFloor = Integer.parseInt(locationIndex.toString());
 
@@ -289,7 +296,7 @@ public class SearchPage extends Activity {
 //        String MyFloor = myfloor.toString();
 //        //Code to change the floor level
 //        if (MyFloor == "3"){
-//            mCurrentSubLocationIndex = 1;
+            mCurrentSubLocationIndex = 1;
 //        }
 
 

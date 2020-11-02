@@ -137,8 +137,9 @@ import com.navigine.naviginesdk.*;
       // String Location= com.navigine.naviginesdk.Location.class.getName();
       cat = getIntent().getStringExtra("cat");
       Log.d(TAG, "MainActivity started");
+
       //My codes for Venue List
-//        sharedpreferences = getSharedPreferences(floorpreferences, Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences(floorpreferences, Context.MODE_PRIVATE);
 
 //    fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -147,6 +148,7 @@ import com.navigine.naviginesdk.*;
       requestWindowFeature(Window.FEATURE_NO_TITLE);
       setContentView(R.layout.activity_main);
       //Used  to test feature
+
       mTest=findViewById(R.id.btnTest);
 mTest.setOnClickListener(new OnClickListener() {
     @Override
@@ -1327,9 +1329,9 @@ requestCameraPermission();
           PointF S = new PointF(O.x - radius1 * cosA * 0.44f - radius1 * sinA * 0.55f, O.y - radius1 * sinA * 0.44f + radius1 * cosA * 0.55f);
 
           // Drawing transparent circle
-          paint.setStrokeWidth(0);
-          paint.setColor(circleColor);
-          canvas.drawCircle(O.x, O.y, radius, paint);
+//          paint.setStrokeWidth(0);
+//          paint.setColor(circleColor);
+//          canvas.drawCircle(O.x, O.y, radius, paint);
 
           // Drawing solid circle
           paint.setColor(solidColor);
@@ -1425,10 +1427,18 @@ requestCameraPermission();
         editor.putInt("Floor",0);
         editor.apply();
 
+
+//        String floornumber = settings.getString("Floor","");
+
       //intent.putExtra("VenueList", (Serializable) VenueList);
         Intent intent = new Intent(getApplicationContext(), SearchPage.class);
+
+
+
       startActivity(intent);
     }
+
+
 
       private void requestCameraPermission()
       {
