@@ -329,7 +329,7 @@ requestCameraPermission();
                         @Override
                         public void onDraw(Canvas canvas) {
 
-//                          drawZones(canvas);
+                          drawZones(canvas);
                           drawPoints(canvas);
                           drawVenues(canvas);
                           drawDevice(canvas);
@@ -1328,9 +1328,9 @@ requestCameraPermission();
           PointF S = new PointF(O.x - radius1 * cosA * 0.44f - radius1 * sinA * 0.55f, O.y - radius1 * sinA * 0.44f + radius1 * cosA * 0.55f);
 
           // Drawing transparent circle
-          paint.setStrokeWidth(0);
-          paint.setColor(circleColor);
-          canvas.drawCircle(O.x, O.y, radius, paint);
+//          paint.setStrokeWidth(0);
+//          paint.setColor(circleColor);
+//          canvas.drawCircle(O.x, O.y, radius, paint);
 
           // Drawing solid circle
           paint.setColor(solidColor);
