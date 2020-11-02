@@ -152,7 +152,9 @@ import com.navigine.naviginesdk.*;
 mTest.setOnClickListener(new OnClickListener() {
     @Override
     public void onClick(View v) {
-
+// private void handleLongClick(float x, float y) {
+//      Log.d(TAG, String.format(Locale.ENGLISH, "Long click at (%.2f, %.2f)", x, y));
+//      makePin(mLocationView.getAbsCoordinates(x, y));
         //text = "L306";//week9
 
         SubLocation subLoc = mLocation.getSubLocations().get(0);
@@ -166,10 +168,11 @@ mTest.setOnClickListener(new OnClickListener() {
                 Log.d(TAG, String.format(Locale.ENGLISH, "Click at (%.2f, %.2f)", ven.getX(), ven.getY()));
                 //
                 handleClick(ven.getX(), ven.getY());
-                mSelectedVenue = subLoc.getVenues().get(i);
-                mTargetVenue = mSelectedVenue;
-                mNextRoute.setVisibility(View.INVISIBLE);
-                mNavigation.setTarget(new LocationPoint(mLocation.getId(), subLoc.getId(), mTargetVenue.getX(), mTargetVenue.getY()));
+                makePin(mLocationView.getAbsCoordinates(ven.getX(), ven.getY()));
+          //      mSelectedVenue = subLoc.getVenues().get(i);
+          //      mTargetVenue = mSelectedVenue;
+               // mNextRoute.setVisibility(View.INVISIBLE);
+          //      mNavigation.setTarget(new LocationPoint(mLocation.getId(), subLoc.getId(), mTargetVenue.getX(), mTargetVenue.getY()));
             }
 
 
