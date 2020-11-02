@@ -660,28 +660,33 @@ requestCameraPermission();
     private void handleDoubleClick(int x, int y) {
 
 
-        TextView debug = (TextView) findViewById(R.id.debuglocate);
-        debug.setText("Pinned");
-
-        ImageView imageView = new ImageView( MainActivity.this);
-        imageView.setBackgroundResource(R.drawable.pin);
+        makePin(mLocationView.getAbsCoordinates(x, y));
+//        cancelPin();
 
 
 
-        int pin_imageview_id = 123;
-
-        try {
-            View pinView = findViewById(pin_imageview_id);
-            if (pinView != null) {
-                debug.setText("Unpinned");
-                ((ViewGroup) pinView.getParent()).removeView(pinView);
-            }
-            else {
-                addView(imageView, x, y);
-            }
-        }catch (Exception e){
-
-        }
+//        TextView debug = (TextView) findViewById(R.id.debuglocate);
+//        debug.setText("Pinned");
+//
+//        ImageView imageView = new ImageView( MainActivity.this);
+//        imageView.setBackgroundResource(R.drawable.pin);
+//
+//
+//
+//        int pin_imageview_id = 123;
+//
+//        try {
+//            View pinView = findViewById(pin_imageview_id);
+//            if (pinView != null) {
+//                debug.setText("Unpinned");
+//                ((ViewGroup) pinView.getParent()).removeView(pinView);
+//            }
+//            else {
+//                addView(imageView, x, y);
+//            }
+//        }catch (Exception e){
+//
+//        }
 
 
     }
@@ -1096,9 +1101,16 @@ requestCameraPermission();
         paint.setStrokeWidth(4 * dp);
         canvas.drawLine(T.x, T.y, T.x, T.y - 3 * tRadius, paint);
 
-        paint.setColor(solidColor);
+        paint.setARGB(255,255,228,43);
         paint.setStrokeWidth(0);
         canvas.drawCircle(T.x, T.y - 3 * tRadius, tRadius, paint);
+
+//          ImageView imageView = new ImageView(MainActivity.this);
+//          imageView.setBackgroundResource(R.drawable.pin);
+//
+//        addView(imageView, T.x, T.y-3);
+
+//        canvas.drawBitmap(mVenueBitmap, null, new RectF(T.x, T.y - 3), paint);
 
         final String text = "Make route";
         final float textWidth = paint.measureText(text);
@@ -1109,7 +1121,7 @@ requestCameraPermission();
 
         mPinPointRect.set(x0 - w / 2, y0 - h / 2, x0 + w / 2, y0 + h / 2);
 
-        paint.setColor(solidColor);
+        paint.setARGB(255,255,65,65);
         canvas.drawRoundRect(mPinPointRect, h / 2, h / 2, paint);
 
         paint.setARGB(255, 255, 255, 255);
@@ -1123,12 +1135,12 @@ requestCameraPermission();
         final PointF T = mLocationView.getScreenCoordinates(mTargetPoint);
         final float tRadius = 10 * dp;
 
-        paint.setARGB(255, 0, 0, 0);
+        paint.setARGB(255,255,65,65);
         paint.setStrokeWidth(4 * dp);
 
         canvas.drawLine(T.x, T.y, T.x, T.y - 3 * tRadius, paint);
 
-        paint.setColor(solidColor);
+        paint.setARGB(255,255,65,65);
 
         canvas.drawCircle(T.x, T.y - 3 * tRadius, tRadius, paint);
       }
