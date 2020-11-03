@@ -135,13 +135,17 @@ import com.navigine.naviginesdk.*;
     protected void onCreate(Bundle savedInstanceState) {//textView5=(TextView) findViewById(R.id.tvLocation);
       // String Location= com.navigine.naviginesdk.Location.class.getName();
       cat = getIntent().getStringExtra("cat");
-      Log.d(TAG, "MainActivity started");
+
+        Log.d(TAG, "MainActivity started");
 
       //My codes for Venue List
         sharedpreferences = getSharedPreferences(floorpreferences, Context.MODE_PRIVATE);
-
+//get Qr Code Data
+        SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile", Context.MODE_PRIVATE);
+        String QrData=sp.getString("QrData","");
+        //Debuging Message can be removed
+        Log.d(TAG, "QrCode data"+QrData);
 //    fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
 
       super.onCreate(savedInstanceState);
       requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -157,26 +161,7 @@ mTest.setOnClickListener(new OnClickListener() {
 //      makePin(mLocationView.getAbsCoordinates(x, y));
         //text = "L306";//week9
 
-        SubLocation subLoc = mLocation.getSubLocations().get(0);
 
-        for(int i = 0; i < subLoc.getVenues().size(); ++i) {
-            Venue ven = subLoc.getVenues().get(i);
-            Log.d(TAG, String.format(Locale.ENGLISH, " %s == %s ", ven.getName(), text1));
-
-            if (ven.getName().equals("L330")) {
-                Log.d(TAG, String.format(Locale.ENGLISH, "Got it"));
-                Log.d(TAG, String.format(Locale.ENGLISH, "Click at (%.2f, %.2f)", ven.getX(), ven.getY()));
-                //
-                handleClick(ven.getX(), ven.getY());
-                mSelectedVenue = subLoc.getVenues().get(i);
-                mTargetVenue = mSelectedVenue;
-                mNextRoute.setVisibility(View.INVISIBLE);
-                mNavigation.setTarget(new LocationPoint(mLocation.getId(), subLoc.getId(), mTargetVenue.getX(), mTargetVenue.getY()));
-            }
-
-
-
-        }
         return;
 
 }
@@ -402,8 +387,7 @@ requestCameraPermission();
 
 
     }
-
-
+//end of oncreaete
     @Override
     public void onDestroy() {
       if (mNavigation != null) {
@@ -836,10 +820,22 @@ requestCameraPermission();
       if (text1 != "---Select---") {
         Search();
       }
+        //QR Code Listener problem
+        //Get Qr Data
+        SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile", Context.MODE_PRIVATE);
+        String QrData=sp.getString("QrData","");
+if(QrData!="NotSet")
+{Toast.makeText(this,"Qr code "+QrData,Toast.LENGTH_SHORT).show();
+    Searchv2();
+}
+
+
 
 
       return true;
     }
+
+
 
     private boolean loadSubLocation(int index) {
       if (mNavigation == null)
@@ -978,6 +974,30 @@ requestCameraPermission();
 
       return v0;
     }
+//yiheng's search
+      public void Searchv2()
+      {
+          SubLocation subLoc = mLocation.getSubLocations().get(0);
+
+          for(int i = 0; i < subLoc.getVenues().size(); ++i) {
+              Venue ven = subLoc.getVenues().get(i);
+              Log.d(TAG, String.format(Locale.ENGLISH, " %s == %s ", ven.getName(), text1));
+
+              if (ven.getName().equals("L330")) {
+                  Log.d(TAG, String.format(Locale.ENGLISH, "Got it"));
+                  Log.d(TAG, String.format(Locale.ENGLISH, "Click at (%.2f, %.2f)", ven.getX(), ven.getY()));
+                  //
+                  handleClick(ven.getX(), ven.getY());
+                  mSelectedVenue = subLoc.getVenues().get(i);
+                  mTargetVenue = mSelectedVenue;
+                  mNextRoute.setVisibility(View.INVISIBLE);
+                  mNavigation.setTarget(new LocationPoint(mLocation.getId(), subLoc.getId(), mTargetVenue.getX(), mTargetVenue.getY()));
+              }
+
+
+
+          }
+      }
 
 
     // Search function
