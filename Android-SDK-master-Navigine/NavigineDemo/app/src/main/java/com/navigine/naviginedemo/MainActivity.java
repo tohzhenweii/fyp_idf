@@ -168,11 +168,10 @@ mTest.setOnClickListener(new OnClickListener() {
                 Log.d(TAG, String.format(Locale.ENGLISH, "Click at (%.2f, %.2f)", ven.getX(), ven.getY()));
                 //
                 handleClick(ven.getX(), ven.getY());
-                makePin(mLocationView.getAbsCoordinates(ven.getX(), ven.getY()));
-          //      mSelectedVenue = subLoc.getVenues().get(i);
-          //      mTargetVenue = mSelectedVenue;
-               // mNextRoute.setVisibility(View.INVISIBLE);
-          //      mNavigation.setTarget(new LocationPoint(mLocation.getId(), subLoc.getId(), mTargetVenue.getX(), mTargetVenue.getY()));
+                mSelectedVenue = subLoc.getVenues().get(i);
+                mTargetVenue = mSelectedVenue;
+                mNextRoute.setVisibility(View.INVISIBLE);
+                mNavigation.setTarget(new LocationPoint(mLocation.getId(), subLoc.getId(), mTargetVenue.getX(), mTargetVenue.getY()));
             }
 
 
