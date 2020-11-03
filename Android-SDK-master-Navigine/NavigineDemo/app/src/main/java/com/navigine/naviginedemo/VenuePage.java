@@ -34,7 +34,7 @@ public class VenuePage extends Activity {
     private Location mLocation = null;
     private NavigationThread mNavigation = null;
     private int mCurrentSubLocationIndex = 0;
-    //String[] VenueList  = new String[] { "L306","L307","L308","L309","L310","L311","L312","L313","L314","L335","L339","L340","FYPJ Enterance","Blk L Floor 3 Enterance"};
+//    String[] VenueList  = new String[] { "L306","L307","L308","L309","L310","L311","L312","L313","L314","L335","L339","L340","FYPJ Enterance","Blk L Floor 3 Enterance","L435","L437","L432","L4 LIFT","L4 LIFT 2","L4 STAIRS", "L424","L4 eNTRANCE","L431","L434","L439","IT HELP DESK","L425","L438","L430","L436","L4 FEMALE TOILET","L4 MALE TOILET"};
     List<String> VenueList = new ArrayList<String>();
     ArrayList<VenueClass> VenueList1 = new ArrayList<VenueClass>();
     ListView simpleList;
