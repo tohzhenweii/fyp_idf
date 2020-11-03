@@ -82,6 +82,7 @@ public class VenuePage extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Rating1.class));
+                //startActivity(new Intent(getApplicationContext(),WriteReview.class));
             }
         });
 
@@ -110,7 +111,7 @@ public class VenuePage extends Activity {
     public void reviewMethod(View v)
     {
         Intent intent = new Intent(this, Rating1.class);
-
+        //Intent intent = new Intent(this, WriteReview.class);
         startActivity(intent);
     }
 

@@ -63,7 +63,7 @@ public class Rating extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
 
-        spinner = findViewById(R.id.spinnerLoc);
+        //spinner = findViewById(R.id.spinnerLoc);
         FeedMessage = (EditText) findViewById(R.id.FeedMessage);
         ratingbar1 = (RatingBar) findViewById(R.id.ratingBar1);
 

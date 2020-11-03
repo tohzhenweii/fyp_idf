@@ -38,8 +38,8 @@ import java.net.NoRouteToHostException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindLocation extends AppCompatActivity {
-TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup,mDebug;
+public class WriteReview extends AppCompatActivity {
+    TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup,mDebug;
     SharedPreferences sp;
     FirebaseDatabase dB;
     DatabaseReference reference;
@@ -62,14 +62,14 @@ TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup,mDeb
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_location);
+        setContentView(R.layout.activity_write_review);
         //user variable
         mTest=findViewById(R.id.tvTest);
-        mgotoFindMeetup=findViewById(R.id.tvGoToFindMeetUp);
+        //mgotoFindMeetup=findViewById(R.id.tvGoToFindMeetUp);
         mDebug=findViewById(R.id.tvDebug);
         ListView Lv=findViewById(R.id.ListView);
-        mSetting=findViewById(R.id.tvSetting);
-        mBtnShareLocation=findViewById(R.id.btnShareLocation);
+        //mSetting=findViewById(R.id.tvSetting);
+        //mBtnShareLocation=findViewById(R.id.btnShareLocation);
 
         mRecommendLocation=findViewById(R.id.btnRecommend);
 //search
@@ -78,65 +78,65 @@ TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup,mDeb
         dB=FirebaseDatabase.getInstance();
         reference= dB.getReference("Venues");
         reference.addValueEventListener(new ValueEventListener() {
-    @Override
-    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-        for(DataSnapshot snapshot1:snapshot.getChildren())
-        {
-            stringArrayList.add(snapshot1.getValue().toString());
-        }
-adapter.notifyDataSetChanged();
-
-
-    }
-
-    @Override
-    public void onCancelled(@NonNull DatabaseError error) {
-
-    }
-});
-
-adapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,stringArrayList);
-Lv.setAdapter(adapter);
-Lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        reference=dB.getReference("users");
-        reference.child(phoneNumber).child("location").setValue(setLocation);
-
-        mDebug.setText("Meet Location: "+adapter.getItem(position));
-        setLocation=adapter.getItem(position);
-        Toast.makeText(getApplicationContext(),"Location "+adapter.getItem(position)+" has been shared!",Toast.LENGTH_SHORT).show();
-    }
-});
-
-mgotoFindMeetup.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        startActivity(new Intent(getApplicationContext(), FindMeetup.class));
-    }
-});
-mSetting.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        startActivity(new Intent(getApplicationContext(), UserProfile.class));
-    }
-});
-
-        mBtnShareLocation.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                reference=dB.getReference("users");
-                reference.child(phoneNumber).child("location").setValue(setLocation);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot snapshot1:snapshot.getChildren())
+                {
+                    stringArrayList.add(snapshot1.getValue().toString());
+                }
+                adapter.notifyDataSetChanged();
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
-mRecommendLocation.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
+
+        adapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,stringArrayList);
+        Lv.setAdapter(adapter);
+        Lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                reference=dB.getReference("users");
+                reference.child(phoneNumber).child("location").setValue(setLocation);
+                Toast.makeText(getApplicationContext(),"Location "+adapter.getItem(position)+" has been shared!",Toast.LENGTH_SHORT).show();
+                mDebug.setText("Meet Location: "+adapter.getItem(position));
+                setLocation=adapter.getItem(position);
+
+            }
+        });
+
+        //mgotoFindMeetup.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            //public void onClick(View v) {
+                //startActivity(new Intent(getApplicationContext(), FindMeetup.class));
+            //}
+        //});
+        //mSetting.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            //public void onClick(View v) {
+                //startActivity(new Intent(getApplicationContext(), UserProfile.class));
+            //}
+        //});
+
+        //mBtnShareLocation.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            //public void onClick(View v) {
+                //reference=dB.getReference("users");
+                //reference.child(phoneNumber).child("location").setValue(setLocation);
+            }
+        //});
+        //mRecommendLocation.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            //public void onClick(View v) {
 
 
-    }
-});
+            //}
+        //});
 
 
 
@@ -214,7 +214,6 @@ mRecommendLocation.setOnClickListener(new View.OnClickListener() {
         VenueList.add(0,"---Select---");
 
 */
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

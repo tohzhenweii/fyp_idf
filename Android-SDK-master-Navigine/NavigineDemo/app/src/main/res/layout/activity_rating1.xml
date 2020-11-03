@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal">
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Write Review"
-        android:textSize="24sp" />
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView2"
@@ -22,11 +25,17 @@
         android:textColor="#000000"
         android:textSize="18sp"/>
 
-    <Spinner
+    <!--<Spinner
         android:id="@+id/spinnerLoc"
         android:layout_width="222dp"
         android:layout_height="43dp"
-        android:text="Select"/>
+        android:text="Select"/>-->
+
+    <ListView
+        android:id="@+id/ListViewLoc"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        tools:listitem="@android:layout/simple_list_item_1" />
 
     <TextView
         android:id="@+id/textView3"
@@ -55,7 +64,7 @@
         android:id="@+id/FeedMessage"
         android:layout_width="match_parent"
         android:layout_height="117dp"
-        android:text="Share details of own experience at this place" />
+        android:hint="Share details of own experience at this place" />
 
     <Button
         android:id="@+id/sendFeed"
