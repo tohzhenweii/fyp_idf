@@ -408,7 +408,7 @@ public class SearchPage extends Activity {
 
     public void Back(View v)
     {
-        Intent intent = new Intent(this, MainActivity.class);
+      Intent intent = new Intent(this, MainActivity.class);
 
         startActivity(intent);
     }

@@ -76,6 +76,7 @@ FirebaseAuth firebaseAuth;
                             sp=getSharedPreferences("MyUserProfile",MODE_PRIVATE);
                             SharedPreferences.Editor editor=sp.edit();
                             editor.putString("email",email);
+                            editor.putString("QrData","NotSet");
                             editor.commit();
                             startActivity(new Intent(getApplicationContext(), SplashActivity.class));
                         }
