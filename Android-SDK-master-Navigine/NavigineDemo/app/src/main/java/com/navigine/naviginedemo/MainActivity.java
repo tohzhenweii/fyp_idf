@@ -79,7 +79,7 @@ import com.navigine.naviginesdk.*;
     TextView textView5;
     List<String> VenueList = new ArrayList<String>();
 
-    public static final String floorpreferences = "FloorPref";
+    public static String floorpreferences = "FloorPref";
       SharedPreferences sharedpreferences;
 
 
@@ -195,6 +195,12 @@ requestCameraPermission();
       searchBtn.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
+            //create sublocation index parseing
+            SubLocation subLoc = mLocation.getSubLocations().get(mCurrentSubLocationIndex);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putInt("Floor",mCurrentSubLocationIndex);
+            editor.apply();
+
           startActivity(new Intent(getApplicationContext(), SearchPage.class));
         }
       });
