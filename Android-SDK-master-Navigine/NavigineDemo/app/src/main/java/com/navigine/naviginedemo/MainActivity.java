@@ -833,7 +833,7 @@ requestCameraPermission();
         String QrData=sp.getString("QrData","");
 if(QrData!="NotSet")
 {Toast.makeText(this,"Qr code "+QrData,Toast.LENGTH_SHORT).show();
-    Searchv2();
+    Searchv2(QrData);
 }
 
 
@@ -982,7 +982,7 @@ if(QrData!="NotSet")
       return v0;
     }
 //yiheng's search
-      public void Searchv2()
+      public void Searchv2(String location)
       {
           SubLocation subLoc = mLocation.getSubLocations().get(0);
 
@@ -990,7 +990,7 @@ if(QrData!="NotSet")
               Venue ven = subLoc.getVenues().get(i);
               Log.d(TAG, String.format(Locale.ENGLISH, " %s == %s ", ven.getName(), text1));
 
-              if (ven.getName().equals("L330")) {
+              if (ven.getName().equals(location)) {
                   Log.d(TAG, String.format(Locale.ENGLISH, "Got it"));
                   Log.d(TAG, String.format(Locale.ENGLISH, "Click at (%.2f, %.2f)", ven.getX(), ven.getY()));
                   //
