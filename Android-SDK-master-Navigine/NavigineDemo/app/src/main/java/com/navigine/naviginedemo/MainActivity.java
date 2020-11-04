@@ -410,6 +410,24 @@ requestCameraPermission();
       moveTaskToBack(true);
     }
 
+
+    //Rotation feature
+      protected void animateToLocation(Location position)
+      {
+//          if (mGoogleMap == null || position == null)
+//              return;
+//
+//          float zoomLevel = mGoogleMap.getCameraPosition().zoom != mGoogleMap.getMinZoomLevel() ? mGoogleMap.getCameraPosition().zoom : 18.0F;
+//          LatLng latLng = new LatLng(position.getLatitude(), position.getLongitude());
+//          CameraPosition cameraPosition = new CameraPosition.Builder()
+//                  .target(latLng)
+//                  .bearing(position.getBearing())
+//                  .zoom(zoomLevel)
+//                  .build();
+//
+//          mGoogleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), null);
+      }
+
     //Refresh locator
     public void toggleAdjustMode(View v) {
       mAdjustMode = !mAdjustMode;
