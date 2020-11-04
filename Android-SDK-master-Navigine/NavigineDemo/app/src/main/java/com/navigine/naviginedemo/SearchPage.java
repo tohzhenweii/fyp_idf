@@ -299,6 +299,10 @@ public class SearchPage extends Activity {
             mCurrentSubLocationIndex = 1;
 //        }
 
+//        CHANGE YOUR FLOOR LEVEL HERE!
+        settings=this.getSharedPreferences("FloorPref",0);
+        int newfloor = settings.getInt("Floor",0);
+        mCurrentSubLocationIndex = newfloor;
 
         SubLocation subLoc = mLocation.getSubLocations().get(mCurrentSubLocationIndex);
 
@@ -408,7 +412,7 @@ public class SearchPage extends Activity {
 
     public void Back(View v)
     {
-        Intent intent = new Intent(this, MainActivity.class);
+      Intent intent = new Intent(this, MainActivity.class);
 
         startActivity(intent);
     }
