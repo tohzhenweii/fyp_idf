@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseLongArray;
 import android.view.View;
@@ -46,7 +47,7 @@ import com.google.firebase.database.DatabaseReference;
 
 
 public class Rating1 extends AppCompatActivity {
-    SharedPreferences sp;
+    SharedPreferences spref;
     EditText FeedMessage;
     Button SendFeed;
     String rating1=""; //String rating1="",rating2="", rating3="";
@@ -57,6 +58,7 @@ public class Rating1 extends AppCompatActivity {
     FirebaseDatabase database;
     String setLocation1;
     static final String TAG = "NAVIGINE.Demo";
+    long maxid=0;
 
     ArrayList<String> list = new ArrayList<>();
     ArrayAdapter<String> adapter;
@@ -105,35 +107,66 @@ public class Rating1 extends AppCompatActivity {
             }
         });
 
-        //insert data to fb
-        //feedback = new Feedback();
-        //ref = FirebaseDatabase.getInstance().getReference().child("Feedback");
-        SendFeed.setOnClickListener(new View.OnClickListener() {
+        //
+        DatabaseReference reff1;
+        reff1=FirebaseDatabase.getInstance().getReference().child("Reviews");
+        // auto increment feedback count
+        reff1.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                //rating1 = String.valueOf(ratingbar1.getRating());
-                //feedback.setRreviews(FeedMessage.getText().toString().trim());
-                //feedback.setRrating(rating1);
-                //feedback.setRlocation(loc);
-                //ref.push().setValue(feedback);
-                float rate = ratingbar1.getRating();
-                String fb = FeedMessage.getText().toString().trim();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    maxid=(snapshot.getChildrenCount());
+                }
+            }
 
-                database = FirebaseDatabase.getInstance();
-                ref = database.getReference("Reviews");
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                ReviewClass reviewclass = new ReviewClass(setLocation1,rate,fb);
-                ref.child(location).setValue(reviewclass); // set as key
-
-                SharedPreferences sp = getSharedPreferences("MyUserProfile",MODE_PRIVATE);
-                SharedPreferences.Editor editor=sp.edit();
-                editor.putString("location",location);
-                editor.putFloat("rating",rate);
-                editor.putString("feedback",fb);
-                editor.commit();
-                Toast.makeText(Rating1.this,"Review submitted!",Toast.LENGTH_LONG).show();
             }
         });
+                //insert data to fb
+                //feedback = new Feedback();
+                //ref = FirebaseDatabase.getInstance().getReference().child("Feedback");
+                SendFeed.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //rating1 = String.valueOf(ratingbar1.getRating());
+                        //feedback.setRreviews(FeedMessage.getText().toString().trim());
+                        //feedback.setRrating(rating1);
+                        //feedback.setRlocation(loc);
+                        //ref.push().setValue(feedback);
+                        float rate = ratingbar1.getRating();
+                        String fb = FeedMessage.getText().toString().trim();
+
+                        //check user input
+                        if (TextUtils.isEmpty(fb)){
+                            FeedMessage.setError("Please enter feedback");
+                            return;
+                        }
+
+                        if (ratingbar1.getRating()==0.0){
+                            Toast.makeText(Rating1.this, "Please enter rating", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        database = FirebaseDatabase.getInstance();
+                        ref = database.getReference("Reviews");
+
+                        ReviewClass reviewclass = new ReviewClass(setLocation1, rate, fb);
+                        //ref.child(setLocation1).setValue(reviewclass); // set as key
+                        ref.child(String.valueOf(maxid+1)).setValue(reviewclass);
+
+                        spref = getSharedPreferences("MyUserProfile", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = spref.edit();
+                        editor.putString("location", setLocation1);
+                        editor.putFloat("rating", rate);
+                        editor.putString("feedback", fb);
+                        editor.commit();
+
+                        //ref.child(String.valueOf(maxid+1)).setValue(reviewclass);
+                        Toast.makeText(Rating1.this, "Review submitted!", Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
 

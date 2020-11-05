@@ -1,6 +1,16 @@
 package com.navigine.naviginedemo;
 
 public class ReviewClass {
+    private String locotion;
+    private float rating;
+    private String feedback;
+
+    public ReviewClass(String locotion, float rating, String feedback){
+        this.locotion =locotion;
+        this.rating=rating;
+        this.feedback=feedback;
+    }
+
     public String getLocotion() {
         return locotion;
     }
@@ -25,13 +35,4 @@ public class ReviewClass {
         this.feedback = feedback;
     }
 
-    private String locotion;
-    private float rating;
-    private String feedback;
-
-    public ReviewClass(String locotion, float rating, String feedback){
-        this.locotion =locotion;
-        this.rating=rating;
-        this.feedback=feedback;
-    }
 }
