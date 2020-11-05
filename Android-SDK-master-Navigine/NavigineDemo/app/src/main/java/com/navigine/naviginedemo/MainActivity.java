@@ -11,6 +11,8 @@ import android.os.*;
 import android.se.omapi.Session;
 import android.view.*;
 import android.view.View.*;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.*;
 import android.util.*;
 
@@ -153,20 +155,20 @@ import com.navigine.naviginesdk.*;
       setContentView(R.layout.activity_main);
       //Used  to test feature
 
-      mTest=findViewById(R.id.btnTest);
-mTest.setOnClickListener(new OnClickListener() {
-    @Override
-    public void onClick(View v) {
+//      mTest=findViewById(R.id.btnTest);
+//mTest.setOnClickListener(new OnClickListener() {
+//    @Override
+//    public void onClick(View v) {
 // private void handleLongClick(float x, float y) {
 //      Log.d(TAG, String.format(Locale.ENGLISH, "Long click at (%.2f, %.2f)", x, y));
 //      makePin(mLocationView.getAbsCoordinates(x, y));
         //text = "L306";//week9
 
 
-        return;
+//        return;
 
-}
-});
+//}
+//});
 mActivateScanner=findViewById(R.id.btnActivateScanner);
 mActivateScanner.setOnClickListener(new OnClickListener() {
     @Override
@@ -268,6 +270,8 @@ requestCameraPermission();
       // Initializing location view
       mLocationView = (LocationView) findViewById(R.id.navigation__location_view);
       mLocationView.setBackgroundResource(R.drawable.elm_splash);
+
+
 
       mLocationView.setListener
               (
@@ -412,21 +416,39 @@ requestCameraPermission();
 
 
     //Rotation feature
-      protected void animateToLocation(Location position)
-      {
-//          if (mGoogleMap == null || position == null)
-//              return;
-//
-//          float zoomLevel = mGoogleMap.getCameraPosition().zoom != mGoogleMap.getMinZoomLevel() ? mGoogleMap.getCameraPosition().zoom : 18.0F;
-//          LatLng latLng = new LatLng(position.getLatitude(), position.getLongitude());
-//          CameraPosition cameraPosition = new CameraPosition.Builder()
-//                  .target(latLng)
-//                  .bearing(position.getBearing())
-//                  .zoom(zoomLevel)
-//                  .build();
-//
-//          mGoogleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), null);
+      public void turnMap(View v){
+        if (ORIENTATION_ENABLED){
+//            Animation an = new RotateAnimation(0.0f, 90.0f, 45,45);
+//            an.setDuration(0);
+//            mLocationView.setAnimation(an);
+
+//            RotateAnimation rotate = new RotateAnimation(0f, mLocationView.getRotation()+90,
+//                    Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+//            mLocationView.startAnimation(rotate);
+//            rotate.setFillAfter(true);
+
+            mLocationView.setRotation(mLocationView.getRotation()+90);
+
+
+
+          }
       }
+
+//      protected void animateToLocation(Location position)
+//      {
+////          if (mGoogleMap == null || position == null)
+////              return;
+////
+////          float zoomLevel = mGoogleMap.getCameraPosition().zoom != mGoogleMap.getMinZoomLevel() ? mGoogleMap.getCameraPosition().zoom : 18.0F;
+////          LatLng latLng = new LatLng(position.getLatitude(), position.getLongitude());
+////          CameraPosition cameraPosition = new CameraPosition.Builder()
+////                  .target(latLng)
+////                  .bearing(position.getBearing())
+////                  .zoom(zoomLevel)
+////                  .build();
+////
+////          mGoogleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), null);
+//      }
 
     //Refresh locator
     public void toggleAdjustMode(View v) {
