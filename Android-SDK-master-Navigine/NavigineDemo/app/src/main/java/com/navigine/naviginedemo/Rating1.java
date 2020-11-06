@@ -139,11 +139,14 @@ public class Rating1 extends AppCompatActivity {
                         String fb = FeedMessage.getText().toString().trim();
 
                         //check user input
+                        if (adapter.isEmpty()){
+                            Toast.makeText(Rating1.this,"Please select a location",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         if (TextUtils.isEmpty(fb)){
                             FeedMessage.setError("Please enter feedback");
                             return;
                         }
-
                         if (ratingbar1.getRating()==0.0){
                             Toast.makeText(Rating1.this, "Please enter rating", Toast.LENGTH_SHORT).show();
                             return;
