@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
 EditText mEmail,mPassword;
-Button mBtnLogin;
+Button mBtnLogin,mGuestlogin;
 TextView mCreateBtn;
 ProgressBar ProgressBar;
 FirebaseAuth firebaseAuth;
@@ -36,7 +36,7 @@ FirebaseAuth firebaseAuth;
         ProgressBar=findViewById(R.id.progressBar);
         firebaseAuth=firebaseAuth.getInstance();
         mBtnLogin=findViewById(R.id.btnLogin);
-
+mGuestlogin=findViewById(R.id.btnGuestlogin);
         mCreateBtn=findViewById(R.id.btnGoToRegister);
 
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +96,17 @@ FirebaseAuth firebaseAuth;
                 startActivity(new Intent(getApplicationContext(), Register.class));
             }
         });
+mGuestlogin.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        sp=getSharedPreferences("MyUserProfile",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sp.edit();
+        editor.putString("Guest","True");
+        editor.commit();
+        startActivity(new Intent(getApplicationContext(), SplashActivity.class));
 
+    }
+});
 
 
     }

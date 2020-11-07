@@ -153,6 +153,8 @@ import com.navigine.naviginesdk.*;
       super.onCreate(savedInstanceState);
       requestWindowFeature(Window.FEATURE_NO_TITLE);
       setContentView(R.layout.activity_main);
+      //Guest mode
+        final String Guest=sp.getString("Guest","");
       //Used  to test feature
 
 //      mTest=findViewById(R.id.btnTest);
@@ -190,7 +192,12 @@ requestCameraPermission();
       mGotoLocation.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
-          startActivity(new Intent(getApplicationContext(), FindLocation.class));
+            if(Guest=="True")
+            {
+                Toast.makeText(MainActivity.this,"Login to use this Feature ",Toast.LENGTH_SHORT).show();
+            }
+            else{
+          startActivity(new Intent(getApplicationContext(), FindLocation.class));}
         }
       });
 
@@ -872,7 +879,7 @@ requestCameraPermission();
         SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile", Context.MODE_PRIVATE);
         String QrData=sp.getString("QrData","");
 if(QrData!="NotSet")
-{Toast.makeText(this,"Qr code "+QrData,Toast.LENGTH_SHORT).show();
+{Toast.makeText(this," Location "+QrData,Toast.LENGTH_SHORT).show();
     Searchv2(QrData);
 }
 

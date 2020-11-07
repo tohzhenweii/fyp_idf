@@ -38,10 +38,9 @@
         android:textColorHint="#0745DF"
         app:layout_constraintBottom_toTopOf="@+id/btnGoFindMeetup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.468" />
+        app:layout_constraintVertical_bias="0.268" />
 
     <TextView
         android:id="@+id/tvTest"
@@ -69,10 +68,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintHorizontal_bias="0.306"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.464" />
 
     <TextView
         android:id="@+id/tvCreateMeetUp"
@@ -91,8 +90,40 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGoFindMeetup"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintVertical_bias="0.235" />
+
+    <Button
+        android:id="@+id/btnHeadToMeetup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginBottom="101dp"
+        android:background="@drawable/redround"
+        android:text="GoThere"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCreateMeetUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toEndOf="@+id/btnGoFindMeetup"
+        app:layout_constraintTop_toBottomOf="@+id/txtSearch"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFC107"
+        android:text="MyMeetUps"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCreateMeetUp"
+        app:layout_constraintVertical_bias="0.179" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
