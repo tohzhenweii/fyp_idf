@@ -30,6 +30,7 @@ public class MyMeetUps extends AppCompatActivity {
     private ListView lvFriends;
     private TextView tvResult;
     private EditText txtFindFriend;
+    String userName;
 private Boolean UserExist=false;
 private Boolean areFriends=false;
     long maxid;
@@ -51,13 +52,14 @@ private Boolean areFriends=false;
         btnAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userName=txtFindFriend.getText().toString().trim();
-               // CheckifUserExist(userName);
-             //   CheckIfIsFriend(userName);
-             //   if(UserExist=true&&areFriends==false)
-             //   {
+                userName=txtFindFriend.getText().toString().trim();
+                CheckifUserExist(userName);
+               CheckIfIsFriend(userName);
+               CountFriends();
+                if(UserExist=true&&areFriends==false)
+                {
                     AddFriend(userName);
-            //    }
+                }
                 Toast.makeText(getApplicationContext(),"Search Activated",Toast.LENGTH_SHORT).show();
             }
         });
@@ -73,21 +75,22 @@ private Boolean areFriends=false;
         return username;
     }
     private void AddFriend( String inputUserName)
-    {   String  myName=GetUserName();
-
-        dB=FirebaseDatabase.getInstance();
-
-
-        reference=dB.getReference("users").child("ok").child("showLocation");
+    {long count=CountFriends();
+        dB = FirebaseDatabase.getInstance();
 
 
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference = dB.getReference("users").child(userName).child("showLocation").child(inputUserName);
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-if(snapshot.exists())
-{
-                maxid=snapshot.getChildrenCount();}
-
+                if(snapshot.exists())
+                {
+                    Toast.makeText(getApplicationContext(),"Already Friends",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {reference = dB.getReference("users").child("ok").child("showLocation");
+                    reference.child(String.valueOf(maxid)).setValue(userName);
+                }
             }
 
             @Override
@@ -96,8 +99,8 @@ if(snapshot.exists())
             }
         });
        // reference=dB.getReference("users").child(myName).child("showLocation");
-        reference.child(String.valueOf(maxid+1)).setValue(inputUserName);
-       
+
+
 
     }
 
@@ -150,8 +153,35 @@ private void CheckIfIsFriend(final String inputUserName)
     });
 }
 
+private long CountFriends() {
+
+    {
+        String myName = GetUserName();
+
+        dB = FirebaseDatabase.getInstance();
 
 
+        reference = dB.getReference("users").child(myName).child("showLocation");
 
 
-}
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    maxid = snapshot.getChildrenCount();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        return maxid;
+    }
+
+
+}}
