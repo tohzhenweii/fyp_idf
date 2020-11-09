@@ -296,7 +296,7 @@ public class SearchPage extends Activity {
 //        String MyFloor = myfloor.toString();
 //        //Code to change the floor level
 //        if (MyFloor == "3"){
-            mCurrentSubLocationIndex = 1;
+//            mCurrentSubLocationIndex = 1;
 //        }
 
 //        CHANGE YOUR FLOOR LEVEL HERE!

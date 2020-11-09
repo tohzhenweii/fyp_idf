@@ -141,7 +141,7 @@ import com.navigine.naviginesdk.*;
 
         Log.d(TAG, "MainActivity started");
 
-      //My codes for Venue List
+      //Codes for Venue List retrieve
         sharedpreferences = getSharedPreferences(floorpreferences, Context.MODE_PRIVATE);
 //get Qr Code Data
         SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile", Context.MODE_PRIVATE);

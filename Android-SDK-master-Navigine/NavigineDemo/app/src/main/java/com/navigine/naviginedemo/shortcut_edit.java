@@ -3,6 +3,7 @@ package com.navigine.naviginedemo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +42,8 @@ public class shortcut_edit extends Activity {
     public String text1 = null;
     Context ctx;
     private MyDbAdapter mydb ;
+
+    SharedPreferences settings;
 
     List<String> VenueList = new ArrayList<String>();
 
@@ -94,6 +97,11 @@ public class shortcut_edit extends Activity {
     }
     public void VenueLists() {
         mLocation = mNavigation.getLocation();
+
+        settings=this.getSharedPreferences("FloorPref",0);
+        int newfloor = settings.getInt("Floor",0);
+        mCurrentSubLocationIndex = newfloor;
+
         SubLocation subLoc = mLocation.getSubLocations().get(mCurrentSubLocationIndex);
         text1 = getIntent().getStringExtra("Position1");
         for ( int i = 0; i < subLoc.getVenues().size(); i++) {
