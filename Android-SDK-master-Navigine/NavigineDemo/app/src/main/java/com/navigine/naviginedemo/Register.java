@@ -70,7 +70,7 @@ SharedPreferences sp;
                 return;
             }
             if(TextUtils.isEmpty(phoneNumber)){
-                mPhone.setError("Email is Required");
+                mPhone.setError("PhoneNumber is Required");
 
                 return;
             }
@@ -85,7 +85,7 @@ SharedPreferences sp;
 
             }
             if(password.length()<6){
-                mPassword.setError("Password must be at least 9 Character");
+                mPassword.setError("Password must be at least 6 Character");
                 return;
             }
             if(!password.equals(confirmPassword)){
@@ -102,7 +102,7 @@ SharedPreferences sp;
             rootNode=FirebaseDatabase.getInstance();
             reference=rootNode.getReference("users");
             String location="Notset";
-            String ShowLocation="False";
+            String ShowLocation="";
 
            UserHelper helper=new UserHelper(username,phoneNumber,location,ShowLocation,email);
             reference.child(username).setValue(helper);

@@ -31,8 +31,9 @@ import java.util.ArrayList;
 public class FindMeetup extends AppCompatActivity {
     TextView mTest;
     EditText mSearchUser;
-    Button mBtnGo,mHeadToMeetUp;
+    Button mBtnGo,mHeadToMeetUp,mMyMeetUp;
     FirebaseDatabase dB;
+
     DatabaseReference reference;
     SharedPreferences sp;
 
@@ -48,7 +49,7 @@ public class FindMeetup extends AppCompatActivity {
         mBtnGo=findViewById(R.id.btnGoFindMeetup);
         mHeadToMeetUp=findViewById(R.id.btnHeadToMeetup);
         mSearchUser=findViewById(R.id.txtSearch);
-
+mMyMeetUp=findViewById(R.id.btnGoToMyMeetups);
 mTest=findViewById(R.id.tvTest);
 mHeadToMeetUp.setVisibility(View.GONE);
         sp=getSharedPreferences("MyUserProfile",MODE_PRIVATE);
@@ -61,7 +62,7 @@ mHeadToMeetUp.setVisibility(View.GONE);
         mBtnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String FindUser=mSearchUser.getText().toString().trim();
+                final String FindUser=mSearchUser.getText().toString().trim();
                 dB= FirebaseDatabase.getInstance();
                 reference=dB.getReference("users").child(FindUser).child("location");
                 reference.addValueEventListener(new ValueEventListener() {
@@ -73,7 +74,7 @@ mHeadToMeetUp.setVisibility(View.GONE);
                         if(snapshot.exists())
                         {              Location=snapshot.getValue().toString();
                         //Display meet up location for user
-                            mTest.setText("MeetUp Location is At "+Location);
+                            mTest.setText(FindUser+" will Meeting you at "+Location);
                             //Set go to meetup to true
                             mHeadToMeetUp.setVisibility(View.VISIBLE);
                             mHeadToMeetUp.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +105,12 @@ mHeadToMeetUp.setVisibility(View.GONE);
             }
         });
 
-
+mMyMeetUp.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(getApplicationContext(), MyMeetUps.class));
+    }
+});
 
 
 

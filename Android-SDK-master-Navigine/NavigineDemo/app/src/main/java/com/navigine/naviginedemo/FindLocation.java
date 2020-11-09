@@ -39,23 +39,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindLocation extends AppCompatActivity {
-TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup,mDebug;
-    SharedPreferences sp;
+TextView mTest,mgotoFindMeetup,mDebug;
+
     FirebaseDatabase dB;
     DatabaseReference reference;
-    //search variable
-    NavigationThread mNavigation = null;
-    Spinner LVenue1 = null;
-    List<String> VenueList = new ArrayList<String>();
-    Location mLocation = null;
-    int mCurrentSubLocationIndex = 0;
-    static final String TAG = "NAVIGINE.Demo";
     Button mSetting,mBtnShareLocation,mRecommendLocation;
     String setLocation;
-
     //search variables
-
-
     ArrayList<String>stringArrayList=new ArrayList<>();
     ArrayAdapter<String>adapter;
 

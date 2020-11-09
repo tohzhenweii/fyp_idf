@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradientbg"
+    android:background="@drawable/elm_splash"
     tools:context=".FindLocation">
 
     <TextView
@@ -58,10 +58,11 @@
         android:id="@+id/ListView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:background="#FFFFFF"
         android:divider="@android:color/white"
         android:dividerHeight="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
 
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
