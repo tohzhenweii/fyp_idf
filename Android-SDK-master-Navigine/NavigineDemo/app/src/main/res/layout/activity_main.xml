@@ -357,6 +357,17 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/refresh"
+                android:onClick="toggleAdjustMode" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="10dp"/>
+
+            <Button
+                android:id="@+id/rotate"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/rotate"
                 android:onClick="turnMap" />
 
             <View

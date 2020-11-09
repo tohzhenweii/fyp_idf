@@ -157,7 +157,7 @@ import com.navigine.naviginesdk.*;
         final String Guest=sp.getString("Guest","");
       //Used  to test feature
 
-//      mTest=findViewById(R.id.btnTest);
+      mTest=findViewById(R.id.btnTest);
 //mTest.setOnClickListener(new OnClickListener() {
 //    @Override
 //    public void onClick(View v) {
