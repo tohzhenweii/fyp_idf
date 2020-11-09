@@ -434,12 +434,26 @@ requestCameraPermission();
 //            mLocationView.startAnimation(rotate);
 //            rotate.setFillAfter(true);
 
-            mLocationView.setRotation(mLocationView.getRotation()+90);
+//            mLocationView.setRotation(mLocationView.getRotation()+90);
 
+            mLocationView.setRotation(mDeviceInfo.getAzimuth());
+            TextView debug = (TextView) findViewById(R.id.debuglocate);
+            debug.setText((int) mDeviceInfo.getAzimuth());
 
 
           }
       }
+
+//      private void updateCameraBearing(GoogleMap googleMap, float bearing) {
+//          if ( googleMap == null) return;
+//          CameraPosition camPos = CameraPosition
+//                  .builder(
+//                          googleMap.getCameraPosition() // current Camera
+//                  )
+//                  .bearing(bearing)
+//                  .build();
+//          googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(camPos));
+//      }
 
 //      protected void animateToLocation(Location position)
 //      {
