@@ -74,7 +74,7 @@ TextView mShareLocation,mEmail,mPhoneNumber,mUserName,mTest,mgotoFindMeetup,mDeb
         mRecommendLocation=findViewById(R.id.btnRecommend);
 //search
         SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile", Context.MODE_PRIVATE);
-        final String phoneNumber=sp.getString("phoneNumber","");
+        final String username=sp.getString("username","");
         dB=FirebaseDatabase.getInstance();
         reference= dB.getReference("Venues");
         reference.addValueEventListener(new ValueEventListener() {
@@ -102,7 +102,7 @@ Lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         reference=dB.getReference("users");
-        reference.child(phoneNumber).child("location").setValue(setLocation);
+        reference.child(username).child("location").setValue(setLocation);
 
         mDebug.setText("Meet Location: "+adapter.getItem(position));
         setLocation=adapter.getItem(position);
@@ -127,7 +127,7 @@ mSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 reference=dB.getReference("users");
-                reference.child(phoneNumber).child("location").setValue(setLocation);
+                reference.child(username).child("location").setValue(setLocation);
             }
         });
 mRecommendLocation.setOnClickListener(new View.OnClickListener() {

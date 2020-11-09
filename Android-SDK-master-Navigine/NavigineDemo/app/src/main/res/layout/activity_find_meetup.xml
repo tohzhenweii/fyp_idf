@@ -49,7 +49,7 @@
         android:layout_marginTop="164dp"
         android:layout_marginBottom="512dp"
         android:background="#FFFFFF"
-        android:text="Enter Friend's Phone Number"
+        android:text="Enter Friend's Username"
         android:textColor="#0745DF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -100,18 +100,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
-        android:layout_marginTop="51dp"
         android:layout_marginBottom="101dp"
         android:background="@drawable/redround"
         android:text="GoThere"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tvCreateMeetUp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintStart_toEndOf="@+id/btnGoFindMeetup"
-        app:layout_constraintTop_toBottomOf="@+id/txtSearch"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.544" />
 
     <Button
         android:id="@+id/button3"
