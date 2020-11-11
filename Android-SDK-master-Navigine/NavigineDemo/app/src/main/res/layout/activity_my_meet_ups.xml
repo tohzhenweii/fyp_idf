@@ -54,7 +54,7 @@
 
     <TextView
         android:id="@+id/tvNotification"
-        android:layout_width="3dp"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginTop="32dp"
         android:background="#FFFFFF"
@@ -62,5 +62,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAddFriend"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="308dp"
+        android:text="GO"
+        app:layout_constraintBottom_toBottomOf="@+id/lvFriends"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintStart_toEndOf="@+id/tvNotification"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddFriend"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

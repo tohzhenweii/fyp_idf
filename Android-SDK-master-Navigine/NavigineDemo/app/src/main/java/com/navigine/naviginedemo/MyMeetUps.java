@@ -5,10 +5,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,26 +25,31 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.net.HttpCookie;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 public class MyMeetUps extends AppCompatActivity {
 
     private static final String TAG ="" ;
     private FirebaseDatabase dB;
     private DatabaseReference reference;
-    private Button btnAddFriend;
+    private Button btnAddFriend,btnGo;
+
     private ListView lvFriends;
     private TextView tvResult;
     private EditText txtFindFriend;
+    private String FriendLocation;
     String userName;
 private Boolean UserExist=false;
 private Boolean areFriends=false;
     long maxid;
     //search variables
     private ArrayList<String> stringArrayList=new ArrayList<>();
-    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<String> adapter1;
     private int amountOfFriends;
+
+    //new search variable
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +62,10 @@ private Boolean areFriends=false;
         btnAddFriend=findViewById(R.id.btnAddFriend);
         lvFriends=findViewById(R.id.lvFriends);
         tvResult=findViewById(R.id.tvNotification);
+        btnGo=findViewById(R.id.button3);
 //Load Friendlist
         LoadFriendList();
-
+btnGo.setVisibility(View.GONE);
         btnAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +82,28 @@ private Boolean areFriends=false;
             }
         });
 
+     lvFriends.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+         @Override
+         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+             String friendName;
+             friendName=adapter1.getItem(position);
+             GetFriendLocation(friendName);
+             tvResult.setText("Click me to meet your Friend at "+FriendLocation);
+             btnGo.setVisibility(View.VISIBLE);
+
+         }
+     });
+btnGo.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+if(FriendLocation==null){
+    Toast.makeText(getApplicationContext(),"Friend has not Set a meetup location",Toast.LENGTH_SHORT).show();
+} else if (FriendLocation=="Notset") {
+    Toast.makeText(getApplicationContext(),"Friend has not Set a meetup location",Toast.LENGTH_SHORT).show();
+} else {
+    GotoFriendLocation();
+}}
+});
 
 
 
@@ -236,7 +266,10 @@ private void GetFriendCountFromDB()
 
 }
 private void LoadFriendList()
-{   String acUserName=GetUserName();
+        
+{
+    Log.d(TAG, "LoadFriendList: Loaded");
+    String acUserName=GetUserName();
     dB=FirebaseDatabase.getInstance();
     reference=dB.getReference("users").child(acUserName).child("showLocation");
     reference.addValueEventListener(new ValueEventListener() {
@@ -244,10 +277,13 @@ private void LoadFriendList()
         public void onDataChange(@NonNull DataSnapshot snapshot) {
             for(DataSnapshot Dsp :snapshot.getChildren())
             {
-
+                LinkedHashSet hs = new LinkedHashSet();
                 stringArrayList.add(Dsp.getValue().toString());
+                hs.addAll(stringArrayList);
+                stringArrayList.clear();
+                stringArrayList.addAll(hs);
             }
-            adapter.notifyDataSetChanged();
+            adapter1.notifyDataSetChanged();
         }
 
 
@@ -256,11 +292,41 @@ private void LoadFriendList()
 
         }
     });
-    adapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,stringArrayList);
-    lvFriends.setAdapter(adapter);
+    adapter1=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,stringArrayList);
+    lvFriends.setAdapter(adapter1);
 
 
 
+}
+private void GetFriendLocation(String friendName)
+{
+
+    dB= FirebaseDatabase.getInstance();
+    reference=dB.getReference("users").child(friendName).child("location");
+    reference.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+            if(snapshot.exists())
+            {
+                FriendLocation=snapshot.getValue().toString();
+            }
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+    });
+
+}
+private void GotoFriendLocation()
+{
+    SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile", Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor=sp.edit();
+    editor.putString("QrData",FriendLocation);
+    editor.commit();
+    startActivity(new Intent(getApplicationContext(), MainActivity.class));
 }
 
 
