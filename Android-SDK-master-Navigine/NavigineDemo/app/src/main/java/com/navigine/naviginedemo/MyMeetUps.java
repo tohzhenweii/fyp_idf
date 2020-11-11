@@ -88,7 +88,7 @@ btnGo.setVisibility(View.GONE);
              String friendName;
              friendName=adapter1.getItem(position);
              GetFriendLocation(friendName);
-             tvResult.setText("Click me to meet your Friend at "+FriendLocation);
+             tvResult.setText("Click GO to meet your Friend at "+FriendLocation);
              btnGo.setVisibility(View.VISIBLE);
 
          }
