@@ -43,5 +43,4 @@ public class reviews extends AppCompatActivity {
         Intent intent = new Intent(this, DisplayReview.class);
         startActivity(intent);
     }
-
 }
