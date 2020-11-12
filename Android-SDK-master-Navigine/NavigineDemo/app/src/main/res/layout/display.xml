@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.047"
         tools:listitem="@android:layout/simple_list_item_1" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <!--<androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerFdbs"
         android:layout_width="334dp"
         android:layout_height="381dp"
@@ -43,19 +43,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.54">
 
-    </androidx.recyclerview.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>-->
+
+
 
     <TextView
         android:id="@+id/textView9"
-<<<<<<< Updated upstream
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Display"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-=======
         android:layout_width="104dp"
         android:layout_height="25dp"
         android:text="Location:"
@@ -106,5 +99,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.22" />
 
->>>>>>> Stashed changes
+    <ListView
+        android:id="@+id/listViewFb"
+        android:layout_width="411dp"
+        android:layout_height="185dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.37"
+        tools:listitem="@android:layout/simple_list_item_1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

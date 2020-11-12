@@ -14,6 +14,7 @@ public class HelperAdapter extends RecyclerView.Adapter {
     List<ReviewClass> fetchDataList;
     //List<FetchData> fetchDataList;
     ReviewClass reviewClass;
+    static final String TAG = "NAVIGINE.Demo";
 
     public HelperAdapter(List<ReviewClass> fetchDataList){
         this.fetchDataList=fetchDataList;
@@ -30,7 +31,7 @@ public class HelperAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ViewHolderClass viewHolderClass=(ViewHolderClass)holder;
-        ReviewClass reviewClass = fetchDataList.get(position);
+        reviewClass = fetchDataList.get(position);
         viewHolderClass.place.setText(reviewClass.getLocotion());
         viewHolderClass.star.setText((int) reviewClass.getRating());
         viewHolderClass.para.setText(reviewClass.getFeedback());
@@ -42,7 +43,6 @@ public class HelperAdapter extends RecyclerView.Adapter {
     }
 
     public class ViewHolderClass extends RecyclerView.ViewHolder{
-
         TextView place,star,para;
 
         public ViewHolderClass(@NonNull View itemView) {

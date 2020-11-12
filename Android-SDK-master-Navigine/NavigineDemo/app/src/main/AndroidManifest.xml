@@ -21,16 +21,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< Updated upstream
+
         <activity android:name=".MyMeetUps">
 
         </activity>
         <activity android:name=".Test" />
-=======
-        <activity android:name=".Test"></activity>
         <activity android:name=".reviews"></activity>
         <activity android:name=".DisplayReview"></activity>
->>>>>>> Stashed changes
+
         <activity android:name=".Rating1" />
         <activity android:name=".QrScanner" />
         <activity android:name=".FindMeetup" />

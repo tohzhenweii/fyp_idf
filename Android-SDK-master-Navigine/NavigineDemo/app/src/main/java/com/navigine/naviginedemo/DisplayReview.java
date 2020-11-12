@@ -1,12 +1,11 @@
 package com.navigine.naviginedemo;
 
 import android.os.Bundle;
-import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -15,33 +14,66 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DisplayReview extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private Adapter adapter;
-    private List list;
+    //RecyclerView recyclerView;
+    //private Adapter adapter;
+    //private List list;
     FirebaseDatabase database;
-    HelperAdapter helperAdapter;
-    DatabaseReference databaseReference;
-    List<ReviewClass> reviewClass;
-    //List<FetchData> fetch data;
+    //HelperAdapter helperAdapter;
+    DatabaseReference ref;
+    //List<ReviewClass> reviewClass;
+    //List<FetchData> fetchData;
+    ListView listView;
+    ArrayList<String> list;
+    ArrayAdapter<String> adapter;
+    ReviewClass reviewClass;
+    static final String TAG = "NAVIGINE.Demo";
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display);
 
-        recyclerView = findViewById(R.id.recyclerFdbs);
+        reviewClass = new ReviewClass();
+        listView = (ListView) findViewById(R.id.listViewFb);
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Reviews");
+        list = new ArrayList<>();
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds: snapshot.getChildren())
+                {
+                    reviewClass = ds.getValue(ReviewClass.class);
+                    //list.add(reviewClass.getRating() + "Stars" + "  " +reviewClass.getFeedback().toString());
+                    list.add(reviewClass.getRating() + " Stars" + "    " +reviewClass.getFeedback());
+                }
+                listView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+        /*recyclerView = findViewById(R.id.recyclerFdbs);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         reviewClass = new ArrayList<>();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Reviews");
+        databaseReference = database.getInstance().getReference("Reviews");
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds: snapshot.getChildren()){
+                for (DataSnapshot ds: snapshot.getChildren())
+                {
                     ReviewClass data = ds.getValue(ReviewClass.class);
                     reviewClass.add(data);
                 }
@@ -53,7 +85,7 @@ public class DisplayReview extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
     }
 }
