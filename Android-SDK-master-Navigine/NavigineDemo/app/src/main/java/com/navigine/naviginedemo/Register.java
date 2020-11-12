@@ -115,6 +115,7 @@ SharedPreferences.Editor editor=sp.edit();
             editor.putString("location",location);
             editor.putString("showLocation",ShowLocation);
             editor.putString("email",email);
+            editor.putInt("amountOfFriends",0);
             editor.commit();
 
 
