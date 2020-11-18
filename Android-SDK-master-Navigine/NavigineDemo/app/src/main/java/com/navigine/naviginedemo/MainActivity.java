@@ -1515,6 +1515,10 @@ if(QrData!="NotSet")
     public void ClickVenueList(View v) {
       Intent intent = new Intent(this, VenuePage.class);
 
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putInt("Floor",mCurrentSubLocationIndex);
+        editor.apply();
+
       startActivity(intent);
     }
 

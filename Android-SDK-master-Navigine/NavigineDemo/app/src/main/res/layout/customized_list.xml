@@ -148,6 +148,6 @@
     <ListView
         android:id="@+id/listVenue"
         android:layout_width="match_parent"
-        android:layout_height="204dp" />
+        android:layout_height="200dp" />
 
 </LinearLayout>
