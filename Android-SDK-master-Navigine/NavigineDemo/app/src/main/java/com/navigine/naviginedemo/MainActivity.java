@@ -26,6 +26,7 @@ import java.io.*;
 import java.lang.*;
 import java.util.*;
 
+import com.google.firebase.database.DatabaseReference;
 import com.navigine.naviginesdk.*;
 
 //class FusedLocationProviderClient extends GoogleApi<Api.ApiOptions.NoOptions> {
@@ -192,11 +193,16 @@ requestCameraPermission();
       mGotoLocation.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(Guest=="True")
+            Log.d(TAG, "onClick: Guest "+Guest);
+            if(Guest.equals("True"))
             {
-                Toast.makeText(MainActivity.this,"Login to use this Feature ",Toast.LENGTH_SHORT).show();
+
+
+                registerUser();
+              
             }
             else{
+                Log.d(TAG, "Redirect to meetup");
           startActivity(new Intent(getApplicationContext(), FindLocation.class));}
         }
       });
@@ -1560,6 +1566,28 @@ new AlertDialog.Builder(this).setTitle("Permission Needed").setMessage("Camera P
     ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},CAMERA_PERMISSION);
 }
       }
+
+      private void registerUser()
+      {
+
+          AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+          alertDialog.setTitle("User Feature");
+          alertDialog.setMessage("Register to user this feature");
+          alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                  new DialogInterface.OnClickListener() {
+                      public void onClick(DialogInterface dialog, int which) {
+                          startActivity(new Intent(getApplicationContext(),Register.class));
+                      }
+                  });
+          alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                  return;
+              }
+          });
+          alertDialog.show();
+      }
+
 
       @Override
       public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
