@@ -1580,6 +1580,11 @@ new AlertDialog.Builder(this).setTitle("Permission Needed").setMessage("Camera P
           alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                   new DialogInterface.OnClickListener() {
                       public void onClick(DialogInterface dialog, int which) {
+                          SharedPreferences sp;
+                          sp=getSharedPreferences("MyUserProfile",MODE_PRIVATE);
+                          SharedPreferences.Editor editor=sp.edit();
+                          editor.putString("Guest","False");
+                          editor.commit();
                           startActivity(new Intent(getApplicationContext(),Register.class));
                       }
                   });
