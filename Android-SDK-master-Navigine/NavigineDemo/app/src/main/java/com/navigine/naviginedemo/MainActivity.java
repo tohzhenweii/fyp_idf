@@ -440,11 +440,11 @@ requestCameraPermission();
 //            mLocationView.startAnimation(rotate);
 //            rotate.setFillAfter(true);
 
-//            mLocationView.setRotation(mLocationView.getRotation()+90);
+            mLocationView.setRotation(mLocationView.getRotation()+90);
 
-            mLocationView.setRotation(mDeviceInfo.getAzimuth());
+//            mLocationView.setRotation(mDeviceInfo.getAzimuth());
             TextView debug = (TextView) findViewById(R.id.debuglocate);
-            debug.setText((int) mDeviceInfo.getAzimuth());
+//            debug.setText((int) mDeviceInfo.getAzimuth());
 
 
           }
