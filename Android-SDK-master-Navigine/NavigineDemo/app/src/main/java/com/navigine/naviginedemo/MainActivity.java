@@ -126,7 +126,7 @@ import com.navigine.naviginesdk.*;
 //    protected LocationListener locationListener;
 
     //qr code variable
-      Button mActivateScanner,mTest;
+      Button mActivateScanner,mTest,mActivateHelp;
 
 
 //  private FusedLocationProviderClient fusedLocationClient;
@@ -137,6 +137,8 @@ import com.navigine.naviginesdk.*;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {//textView5=(TextView) findViewById(R.id.tvLocation);
+
+
       // String Location= com.navigine.naviginesdk.Location.class.getName();
       cat = getIntent().getStringExtra("cat");
 
@@ -154,6 +156,9 @@ import com.navigine.naviginesdk.*;
       super.onCreate(savedInstanceState);
       requestWindowFeature(Window.FEATURE_NO_TITLE);
       setContentView(R.layout.activity_main);
+
+
+
       //Guest mode
         final String Guest=sp.getString("Guest","");
       //Used  to test feature
@@ -185,6 +190,17 @@ requestCameraPermission();
         }
     }
 });
+
+
+        mActivateHelp = findViewById(R.id.guide);
+        mActivateHelp.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView debug = (TextView) findViewById(R.id.debuglocate);
+                debug.setText("detected");
+                startActivity(new Intent(getApplicationContext(),InfoGuide.class));
+            }
+        });
 
       //My codes for search list
 
@@ -1609,6 +1625,19 @@ else
               }
           }
       }
+
+
+
+      public void guideButton(View v) {
+
+            if(v.getId() == R.id.guide) {
+                Intent intent = new Intent(this, InfoGuide.class);
+
+                startActivity(intent);
+            }
+
+      }
+
       // Location listener
 // Yongkai's code
 //  @Override
