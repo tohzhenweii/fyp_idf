@@ -15,14 +15,14 @@
         android:textColor="#FFFFFF"
         android:textSize="30sp" />
 
-    <TextView
-        android:layout_width="411dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_light"
-        android:paddingLeft="5sp"
-        android:text="Red ones are not working yet"
-        android:textColor="#000000"
-        android:textSize="18sp" />
+<!--    <TextView-->
+<!--        android:layout_width="411dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@android:color/holo_red_light"-->
+<!--        android:paddingLeft="5sp"-->
+<!--        android:text="Red ones are not working yet"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="18sp" />-->
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -198,7 +198,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L435 Discussion Room"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <CheckBox
             android:id="@+id/L437"
@@ -207,7 +207,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L437 Lab"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 
@@ -223,7 +223,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L432 Discussion Room"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <CheckBox
             android:id="@+id/L4Lift2"
@@ -232,7 +232,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L4 Lift 2"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 
@@ -248,7 +248,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L4 Lift 1"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <CheckBox
             android:id="@+id/L4Stairs"
@@ -257,7 +257,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L4 Stairs"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <CheckBox
             android:id="@+id/L424"
@@ -266,7 +266,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L424 Lab"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 
@@ -282,7 +282,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L4 Entrance"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <CheckBox
             android:id="@+id/L431"
@@ -291,7 +291,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L431 Discussion Room"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 
@@ -307,7 +307,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L434 Discussion Room"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <CheckBox
             android:id="@+id/L439"
@@ -316,7 +316,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L439 Meeting Room"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 
@@ -332,7 +332,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="IT HELP DESK"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <CheckBox
             android:id="@+id/L425"
@@ -341,7 +341,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L425 Lab"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <CheckBox
             android:id="@+id/L438"
@@ -350,7 +350,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L438 Lab"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 
@@ -366,7 +366,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L430 Discussion Room"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <CheckBox
             android:id="@+id/L436"
@@ -375,7 +375,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L436 Discussion Room"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 
@@ -391,7 +391,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L4 Female Toilet"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <CheckBox
             android:id="@+id/L4MaleToilet"
@@ -400,7 +400,7 @@
             android:layout_marginRight="20dp"
             android:onClick="onCheckboxClicked"
             android:text="L4 Male Toilet"
-            android:textColor="#ED1111" />
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 

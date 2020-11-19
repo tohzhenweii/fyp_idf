@@ -40,7 +40,25 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"><![CDATA[
+
+                ... />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                ]]>
 
                 <TextView
                     android:id="@+id/debuglocate"
@@ -54,6 +72,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.navigine.naviginesdk.LocationView>
@@ -315,6 +335,7 @@
                 android:layout_weight="1"/>
 
             <!-- Zoom in button -->
+
             <FrameLayout android:id="@+id/navigation__zoom_in_view"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -327,6 +348,7 @@
                     android:layout_height="50dp"
                     android:background="@drawable/plus"
                     android:onClick="onZoomIn" />
+
             </FrameLayout>
 
             <View
@@ -374,6 +396,14 @@
                 android:layout_width="1dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/guide"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/question"
+                android:layout_marginBottom="50dp"
+                android:onClick="guideButton" />
 
             <View
                 android:layout_width="1dp"
