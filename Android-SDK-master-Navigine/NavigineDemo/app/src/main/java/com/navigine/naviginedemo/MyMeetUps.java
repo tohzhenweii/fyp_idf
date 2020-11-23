@@ -98,7 +98,7 @@ btnGo.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
 if(FriendLocation==null){
     Toast.makeText(getApplicationContext(),"Friend has not Set a meetup location",Toast.LENGTH_SHORT).show();
-} else if (FriendLocation=="Notset") {
+} else if (FriendLocation.equals("Notset")) {
     Toast.makeText(getApplicationContext(),"Friend has not Set a meetup location",Toast.LENGTH_SHORT).show();
 } else {
     GotoFriendLocation();
@@ -116,6 +116,7 @@ if(FriendLocation==null){
     }
     private void AddFriend(final String inputUserName)
     {
+        Log.d(TAG, "AddFriend: inital value of userexist= "+UserExist.toString());
         final int NoOfFriend=GetFriendCount();
         dB = FirebaseDatabase.getInstance();
 String acUserName=GetUserName();
@@ -129,10 +130,18 @@ String acUserName=GetUserName();
                 {
                     Toast.makeText(getApplicationContext(),"Already Friends ",Toast.LENGTH_SHORT).show();
                 }
-                else
+                else if(snapshot.exists()==false&&UserExist==true)
                 {
 
                     reference.setValue(inputUserName);
+                    UserExist=false;
+                    Toast.makeText(getApplicationContext(),"Friend Added ! ",Toast.LENGTH_SHORT).show();
+
+                }
+                else
+                {
+                    Log.d(TAG, "Value of user exist in else statement"+UserExist.toString());
+
                 }
             }
 
@@ -162,7 +171,9 @@ private void CheckifUserExist(final String userName)
             }
             else
             {
+                Log.d(TAG, "onDataChange: ");
                 Toast.makeText(getApplicationContext(),"User Does Not exist ",Toast.LENGTH_SHORT).show();
+                UserExist=false;
             }
 
         }
