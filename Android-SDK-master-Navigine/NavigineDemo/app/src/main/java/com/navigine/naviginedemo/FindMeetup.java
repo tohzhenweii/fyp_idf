@@ -29,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class FindMeetup extends AppCompatActivity {
-    TextView mTest;
+    TextView mTest,mCreateMeetup;
     EditText mSearchUser;
     Button mBtnGo,mHeadToMeetUp,mMyMeetUp;
     FirebaseDatabase dB;
@@ -49,13 +49,20 @@ public class FindMeetup extends AppCompatActivity {
         mBtnGo=findViewById(R.id.btnGoFindMeetup);
         mHeadToMeetUp=findViewById(R.id.btnHeadToMeetup);
         mSearchUser=findViewById(R.id.txtSearch);
+        mCreateMeetup=findViewById(R.id.tvCreateMeetUp);
 mMyMeetUp=findViewById(R.id.btnGoToMyMeetups);
 mTest=findViewById(R.id.tvTest);
 mHeadToMeetUp.setVisibility(View.GONE);
         sp=getSharedPreferences("MyUserProfile",MODE_PRIVATE);
 
         String[]search_History=getResources().getStringArray(R.array.search_History);
-//Search History
+//goto create meetup
+        mCreateMeetup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), FindLocation.class));
+            }
+        });
 
 
 //Button to Find meetup location
