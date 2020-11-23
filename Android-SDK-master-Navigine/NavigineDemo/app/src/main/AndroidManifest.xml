@@ -52,6 +52,9 @@
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
+            android:name=".InfoGuide"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
             android:name=".NotificationActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
