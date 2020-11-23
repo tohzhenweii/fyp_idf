@@ -83,7 +83,14 @@ mHeadToMeetUp.setVisibility(View.GONE);
                                       SharedPreferences.Editor editor=sp.edit();
                                    editor.putString("QrData",Location);
                               editor.commit();
-                              startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                      if (Location.equals("Notset") || Location == null
+                                      ) {
+
+                                          Toast.makeText(getApplicationContext(),"Friend has not set meetup location",Toast.LENGTH_SHORT).show();
+                                      }
+                                      else {
+                                          startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                      }
                                   }
                             });
                         }
