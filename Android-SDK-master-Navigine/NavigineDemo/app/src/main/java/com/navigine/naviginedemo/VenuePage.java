@@ -3,7 +3,6 @@ package com.navigine.naviginedemo;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,7 +39,6 @@ public class VenuePage extends Activity {
     ArrayList<VenueClass> VenueList1 = new ArrayList<VenueClass>();
     ListView simpleList;
     private static final String TAG = "NAVIGINE.Demo";
-    SharedPreferences settings;
 
     Button rbtn;
 
@@ -122,10 +120,6 @@ public class VenuePage extends Activity {
 
     public void Categories() {
         mLocation = mNavigation.getLocation();
-
-        settings=this.getSharedPreferences("FloorPref",0);
-        int newfloor = settings.getInt("Floor",0);
-        mCurrentSubLocationIndex = newfloor;
 
         SubLocation subLoc = mLocation.getSubLocations().get(mCurrentSubLocationIndex);
 
