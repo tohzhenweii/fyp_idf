@@ -34,5 +34,5 @@ dependencies {
     implementation 'com.github.Navigine:Android-SDK:20191220'
     implementation 'com.google.firebase:firebase-database:19.4.0'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
-
+    implementation 'com.microsoft.azure.android:azure-storage-android:0.8.0@aar'
 }
