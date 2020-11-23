@@ -456,7 +456,20 @@ requestCameraPermission();
 //            mLocationView.startAnimation(rotate);
 //            rotate.setFillAfter(true);
 
-            mLocationView.setRotation(mLocationView.getRotation()+90);
+            View mainLayout = findViewById(R.id.navigation__location_view);
+            int w = mainLayout.getWidth();
+            int h = mainLayout.getHeight();
+
+            mainLayout.setRotation(mainLayout.getRotation()+90);
+
+            //zoomed rotation
+//            mainLayout.setTranslationX((w - h) / 2);
+//            mainLayout.setTranslationY((h - w) / 2);
+//
+//            ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) mainLayout.getLayoutParams();
+//            lp.height = w;
+//            lp.width = h;
+//            mainLayout.requestLayout();
 
 //            mLocationView.setRotation(mDeviceInfo.getAzimuth());
             TextView debug = (TextView) findViewById(R.id.debuglocate);
