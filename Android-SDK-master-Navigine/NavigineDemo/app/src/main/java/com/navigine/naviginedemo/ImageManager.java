@@ -23,10 +23,17 @@ public class ImageManager {
  https://docs.microsoft.com/en-us/rest/api/storageservices/delegating-access-with-a-shared-access-signature
  and https://docs.microsoft.com/en-us/azure/storage/common/storage-dotnet-shared-access-signature-part-1
  */
-    public static final String storageConnectionString = "DefaultEndpointsProtocol=https;"
-            + "AccountName=[ACCOUNT_NAME];"
-            + "AccountKey=[ACCOUNT_KEY]";
+    public static final String storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=idfphotos;AccountKey=QJbltd89LvFz1D5A4vxTgtSA1Jh7bFt9UBz5bbS2s1fB1tJTa8lytr3QR0XgdqGXGvh3QQzAFjLdRZU7lqbV4A==;EndpointSuffix=core.windows.net";
+            //"DefaultEndpointsProtocol=https;"
+            //+ "AccountName=[idfphotos];"
+            //+ "AccountKey=[QJbltd89LvFz1D5A4vxTgtSA1Jh7bFt9UBz5bbS2s1fB1tJTa8lytr3QR0XgdqGXGvh3QQzAFjLdRZU7lqbV4A==];"
 
+
+
+    //DefaultEndpointsProtocol=https;
+    //AccountName=idfphotos;
+    //AccountKey=QJbltd89LvFz1D5A4vxTgtSA1Jh7bFt9UBz5bbS2s1fB1tJTa8lytr3QR0XgdqGXGvh3QQzAFjLdRZU7lqbV4A==;
+    //EndpointSuffix=core.windows.net
     private static CloudBlobContainer getContainer() throws Exception {
         // Retrieve storage account from connection-string.
 
