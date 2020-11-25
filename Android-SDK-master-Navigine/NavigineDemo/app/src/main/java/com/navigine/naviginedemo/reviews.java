@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class reviews extends AppCompatActivity {
-    Button browse, post;
+    Button browse, post, azure;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,6 +16,7 @@ public class reviews extends AppCompatActivity {
 
         browse = findViewById(R.id.btnBrowseReview);
         post = findViewById(R.id.btnPostReview);
+        azure = findViewById(R.id.addPhotoBTN);
 
         // direct to post a review
         post.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +33,13 @@ public class reviews extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), DisplayReview.class));
             }
         });
+
+        azure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PicActivity.class));
+            }
+        });
     }
 
     public void Form_postR(View v){
@@ -41,6 +49,11 @@ public class reviews extends AppCompatActivity {
 
     public void Form_browseR(View v){
         Intent intent = new Intent(this, DisplayReview.class);
+        startActivity(intent);
+    }
+
+    public void Form_azureR(View v){
+        Intent intent = new Intent(this, PicActivity.class);
         startActivity(intent);
     }
 }

@@ -28,7 +28,8 @@
         <activity android:name=".Test" />
         <activity android:name=".reviews"></activity>
         <activity android:name=".DisplayReview"></activity>
-
+        <activity android:name=".ImageActivity"></activity>
+        <activity android:name=".PicActivity"></activity>
         <activity android:name=".Rating1" />
         <activity android:name=".QrScanner" />
         <activity android:name=".FindMeetup" />
