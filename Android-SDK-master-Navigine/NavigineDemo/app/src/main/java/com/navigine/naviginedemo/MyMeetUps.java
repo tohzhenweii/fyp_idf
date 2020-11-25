@@ -152,7 +152,8 @@ String acUserName=GetUserName();
         });
        // reference=dB.getReference("users").child(myName).child("showLocation");
 
-
+UserExist=false
+        ;
 
     }
 
