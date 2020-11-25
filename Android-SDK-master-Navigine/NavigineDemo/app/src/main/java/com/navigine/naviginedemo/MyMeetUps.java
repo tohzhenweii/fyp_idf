@@ -74,6 +74,7 @@ btnGo.setVisibility(View.GONE);
                 CheckifUserExist(userName);
                 CheckIfIsFriend(userName);
                 GetFriendCountFromDB();
+                UserExist=false;
            /*     if(UserExist==true&&areFriends==false)
                 {
                     AddFriend(userName);
@@ -129,6 +130,7 @@ String acUserName=GetUserName();
                 if(snapshot.exists())
                 {
                     Toast.makeText(getApplicationContext(),"Already Friends ",Toast.LENGTH_SHORT).show();
+
                 }
                 else if(snapshot.exists()==false&&UserExist==true)
                 {
@@ -152,7 +154,7 @@ String acUserName=GetUserName();
         });
        // reference=dB.getReference("users").child(myName).child("showLocation");
 
-UserExist=false
+
         ;
 
     }
