@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".DisplayReview">
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textView2"
         android:layout_width="146dp"
         android:layout_height="22dp"
@@ -18,9 +19,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.011" />
+        app:layout_constraintVertical_bias="0.011" />-->
 
-    <ListView
+    <!--<ListView
         android:id="@+id/listViewLoc1"
         android:layout_width="419dp"
         android:layout_height="93dp"
@@ -30,24 +31,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.047"
-        tools:listitem="@android:layout/simple_list_item_1" />
+        tools:listitem="@android:layout/simple_list_item_1" />-->
 
     <!--<androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerFdbs"
-        android:layout_width="334dp"
-        android:layout_height="381dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54">
+        app:layout_constraintVertical_bias="0.54"
 
     </androidx.recyclerview.widget.RecyclerView>-->
 
 
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textView9"
         android:layout_width="104dp"
         android:layout_height="25dp"
@@ -97,18 +98,18 @@
         app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintVertical_bias="0.22" />-->
 
     <ListView
         android:id="@+id/listViewFb"
-        android:layout_width="411dp"
-        android:layout_height="185dp"
+        android:layout_width="413dp"
+        android:layout_height="726dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@android:layout/simple_list_item_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

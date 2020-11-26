@@ -5,7 +5,8 @@ public class ReviewClass {
     private float rating;
     private String feedback;
 
-    public ReviewClass(){}
+    public ReviewClass (){
+    }
 
     public ReviewClass(String locotion, float rating, String feedback){
         this.locotion =locotion;

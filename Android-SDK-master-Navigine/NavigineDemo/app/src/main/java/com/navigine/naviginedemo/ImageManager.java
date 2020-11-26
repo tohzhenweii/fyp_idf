@@ -64,10 +64,13 @@ public class ImageManager {
 
     }
 
+
+    //display images inside blob container
     public static String[] ListImages() throws Exception{
         CloudBlobContainer container = getContainer();
 
         Iterable<ListBlobItem> blobs = container.listBlobs();
+
 
         LinkedList<String> blobNames = new LinkedList<>();
         for(ListBlobItem blob: blobs) {
